@@ -16,6 +16,7 @@ if ($conn) {
     $stmt = $conn->prepare(
         "SELECT b.booking_code, b.check_in, b.check_out, b.total_nights,
                 b.total_amount, b.deposit_amount, b.status, b.created_at,
+                b.receipt_path, b.receipt_uploaded_at,
                 r.name AS room_name, r.room_type
          FROM bookings b
          JOIN rooms r ON r.id = b.room_id
@@ -151,6 +152,35 @@ $pageTitle = 'My Bookings';
                 Booked on <?= date('d M Y, g:i A', strtotime($b['created_at'])) ?>
                 &bull; <?= (int)$b['total_nights'] ?> night<?= $b['total_nights'] > 1 ? 's' : '' ?>
             </p>
+
+            <?php if ($b['status'] === 'pending'): ?>
+                <?php if (empty($b['receipt_path'])): ?>
+                <!-- Receipt not yet uploaded — prompt to continue -->
+                <div class="mt-4 flex flex-col sm:flex-row items-start sm:items-center gap-3 bg-amber-50 border border-amber-200 px-4 py-3">
+                    <div class="flex items-start gap-2 flex-1 text-xs text-amber-800">
+                        <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span><strong>Action required:</strong> Upload your payment receipt to confirm this booking.</span>
+                    </div>
+                    <a href="../guest/upload_receipt_form.php?code=<?= urlencode($b['booking_code']) ?>"
+                       class="shrink-0 flex items-center gap-1.5 bg-boutique-800 hover:bg-boutique-600 text-white text-xs font-bold tracking-widest uppercase px-4 py-2 transition-colors">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/>
+                        </svg>
+                        Upload Receipt
+                    </a>
+                </div>
+                <?php else: ?>
+                <!-- Receipt uploaded, awaiting admin confirmation -->
+                <div class="mt-4 flex items-center gap-2 bg-blue-50 border border-blue-200 px-4 py-3 text-xs text-blue-700">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span><strong>Receipt submitted</strong> on <?= date('d M Y, g:i A', strtotime($b['receipt_uploaded_at'])) ?>. Awaiting admin confirmation.</span>
+                </div>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
         <?php endforeach; ?>
     </div>

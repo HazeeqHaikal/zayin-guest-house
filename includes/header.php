@@ -1,133 +1,106 @@
 <?php $basePath = isset($basePath) ? $basePath : ''; ?>
 
-<header class="bg-white/95 backdrop-blur-md border-b border-boutique-100 sticky top-0 z-50 transition-all">
-<nav>
-    <div class="max-w-7xl mx-auto px-6 lg:px-20 py-4 flex items-center justify-between">
+<style>
+*{box-sizing:border-box;}
+.zh{background:#fff;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:50;}
+.zh-inner{max-width:1280px;margin:0 auto;padding:0 2.5rem;height:60px;display:flex;align-items:center;gap:3rem;}
+.zh-brand{text-decoration:none;flex-shrink:0;display:flex;flex-direction:column;gap:1px;}
+.zh-brand-name{font-size:16px;font-weight:500;letter-spacing:0.02em;color:#111;line-height:1;}
+.zh-brand-sub{font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;line-height:1;}
+.zh-divider{width:1px;height:20px;background:#e0e0e0;flex-shrink:0;}
+.zh-nav{display:flex;align-items:center;gap:2rem;list-style:none;margin:0;padding:0;}
+.zh-nav a{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#888;text-decoration:none;}
+.zh-nav a:hover{color:#111;}
+.zh-right{margin-left:auto;display:flex;align-items:center;gap:1.5rem;flex-shrink:0;}
+.zh-book{font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;padding:9px 20px;background:#111;color:#fff;}
+.zh-book:hover{background:#333;}
+.zh-link{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;text-decoration:none;}
+.zh-link:hover{color:#111;}
+.zh-register{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#888;text-decoration:none;border:1px solid #ddd;padding:7px 14px;}
+.zh-register:hover{border-color:#999;color:#111;}
+.zh-logout{font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#bbb;text-decoration:none;}
+.zh-logout:hover{color:#c0392b;}
+.zh-mob-btn{display:none;background:none;border:none;cursor:pointer;color:#111;padding:4px;}
+.zh-mob-menu{display:none;border-top:1px solid #f0f0f0;background:#fff;}
+.zh-mob-menu.open{display:block;}
+.zh-mob-menu a{display:flex;align-items:center;justify-content:space-between;padding:13px 2.5rem;font-size:11px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#777;text-decoration:none;border-bottom:1px solid #f5f5f5;}
+.zh-mob-menu a:hover{color:#111;}
+.zh-mob-book{background:#111!important;color:#fff!important;justify-content:center!important;border:none!important;margin:1rem 2.5rem 1.5rem!important;padding:13px!important;}
+.zh-mob-logout{color:#ccc!important;}
+.zh-mob-logout:hover{color:#c0392b!important;}
+@media(max-width:768px){
+    .zh-nav,.zh-right,.zh-divider{display:none!important;}
+    .zh-mob-btn{display:flex!important;}
+}
+</style>
 
-        <!-- Logo / Brand -->
-        <a href="<?= $basePath ?>index.php" class="flex items-center gap-3 group">
-            <img src="<?= $basePath ?>assets/logo.png"
-                 alt="Zayin Guest House"
-                 class="h-10 w-auto group-hover:opacity-80 transition-opacity"
-                 onerror="this.style.display='none'">
-            <span class="font-serif text-2xl text-boutique-800 leading-none">
-                Zayin<br>
-                <span class="italic font-light text-sm text-boutique-400 tracking-wide">Guest House</span>
-            </span>
+<header class="zh">
+<nav>
+    <div class="zh-inner">
+
+        <a href="<?= $basePath ?>index.php" class="zh-brand">
+            <span class="zh-brand-name">Zayin</span>
+            <span class="zh-brand-sub">Guest House</span>
         </a>
 
-        <!-- Desktop Nav -->
-        <ul class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase text-slate-500">
-            <li><a href="<?= $basePath ?>index.php#suites" class="hover:text-boutique-600 transition-colors">Our Suites</a></li>
-            <li><a href="<?= $basePath ?>index.php#rules" class="hover:text-boutique-600 transition-colors">Policies</a></li>
-            <li><a href="<?= $basePath ?>index.php#location" class="hover:text-boutique-600 transition-colors">Location</a></li>
-            <li>
-                <a href="<?= $basePath ?>index.php#booking-widget"
-                   class="bg-boutique-800 text-white px-6 py-3 hover:bg-boutique-900 transition-colors inline-block text-center shadow-sm">
-                    Book Now
-                </a>
-            </li>
-            <?php if (!empty($_SESSION['admin_id'])): ?>
-            <li class="flex items-center gap-4 pl-4 border-l border-slate-200">
-                <a href="<?= $basePath ?>admin/dashboard.php" class="hover:text-boutique-600 transition-colors">Admin Panel</a>
-                <a href="<?= $basePath ?>auth/logout.php" class="hover:text-red-500 transition-colors">Logout</a>
-            </li>
-            <?php elseif (!empty($_SESSION['user_id'])): ?>
-            <li class="flex items-center gap-4 pl-4 border-l border-slate-200">
-                <span class="text-boutique-600 normal-case tracking-normal font-semibold text-xs">
-                    Hi, <?= htmlspecialchars(explode(' ', $_SESSION['user_name'])[0]) ?>
-                </span>
-                <a href="<?= $basePath ?>customer/my_bookings.php" class="hover:text-boutique-600 transition-colors">My Bookings</a>
-                <a href="<?= $basePath ?>auth/logout.php" class="hover:text-red-500 transition-colors">Logout</a>
-            </li>
-            <?php else: ?>
-            <li class="flex items-center gap-3 pl-4 border-l border-slate-200">
-                <a href="<?= $basePath ?>auth/login.php" class="hover:text-boutique-600 transition-colors">Login</a>
-                <a href="<?= $basePath ?>auth/register.php"
-                   class="border border-boutique-600 text-boutique-600 px-4 py-2 hover:bg-boutique-600 hover:text-white transition-colors">
-                    Register
-                </a>
-            </li>
-            <?php endif; ?>
+        <div class="zh-divider"></div>
+
+        <ul class="zh-nav">
+            <li><a href="<?= $basePath ?>index.php#suites">Our Suites</a></li>
+            <li><a href="<?= $basePath ?>index.php#rules">Policies</a></li>
+            <li><a href="<?= $basePath ?>index.php#location">Location</a></li>
         </ul>
 
-        <!-- Mobile menu button -->
-        <button id="menuToggle" aria-label="Open menu"
-                class="md:hidden p-2 text-boutique-800 hover:bg-boutique-50 transition-colors rounded-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                      d="M4 6h16M4 12h16M4 18h16"/>
+        <div class="zh-right">
+            <a href="<?= $basePath ?>index.php#booking-widget" class="zh-book">Book Now</a>
+
+            <?php if (!empty($_SESSION['admin_id'])): ?>
+                <a href="<?= $basePath ?>admin/dashboard.php" class="zh-link">Admin</a>
+                <a href="<?= $basePath ?>auth/logout.php" class="zh-logout">Logout</a>
+
+            <?php elseif (!empty($_SESSION['user_id'])): ?>
+                <a href="<?= $basePath ?>customer/my_bookings.php" class="zh-link">My Bookings</a>
+                <a href="<?= $basePath ?>auth/logout.php" class="zh-logout">Logout</a>
+
+            <?php else: ?>
+                <a href="<?= $basePath ?>auth/login.php" class="zh-link">Login</a>
+                <a href="<?= $basePath ?>auth/register.php" class="zh-register">Register</a>
+            <?php endif; ?>
+        </div>
+
+        <button class="zh-mob-btn" id="zhBtn" aria-label="Toggle menu">
+            <svg id="zhIco" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
         </button>
     </div>
 
-    <!-- Mobile Menu Dropdown -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-boutique-100 px-6 pb-6 shadow-2xl absolute w-full left-0 top-full">
-        <ul class="flex flex-col gap-2 text-xs font-semibold tracking-widest uppercase text-slate-500 pt-4">
-            <li><a href="<?= $basePath ?>index.php#suites" class="block py-3 border-b border-boutique-50 hover:text-boutique-600">Our Suites</a></li>
-            <li><a href="<?= $basePath ?>index.php#rules" class="block py-3 border-b border-boutique-50 hover:text-boutique-600">Policies</a></li>
-            <li><a href="<?= $basePath ?>index.php#location" class="block py-3 border-b border-boutique-50 hover:text-boutique-600">Location</a></li>
-            <li>
-                <a href="<?= $basePath ?>index.php#booking-widget"
-                   class="block text-center bg-boutique-800 text-white py-4 hover:bg-boutique-900 transition-colors shadow-sm mt-2">
-                    Book Now
-                </a>
-            </li>
-            <?php if (!empty($_SESSION['admin_id'])): ?>
-            <li class="pt-2 mt-2 border-t border-boutique-50">
-                <a href="<?= $basePath ?>admin/dashboard.php" class="block py-2 hover:text-boutique-600">Admin Panel</a>
-            </li>
-            <li>
-                <a href="<?= $basePath ?>auth/logout.php" class="block py-2 hover:text-red-500">Logout</a>
-            </li>
-            <?php elseif (!empty($_SESSION['user_id'])): ?>
-            <li class="pt-3 mt-2 border-t border-boutique-50">
-                <span class="block py-1 text-boutique-600 normal-case tracking-normal">
-                    Hi, <?= htmlspecialchars(explode(' ', $_SESSION['user_name'])[0]) ?>
-                </span>
-            </li>
-            <li>
-                <a href="<?= $basePath ?>customer/my_bookings.php" class="block py-2 hover:text-boutique-600">My Bookings</a>
-            </li>
-            <li>
-                <a href="<?= $basePath ?>auth/logout.php" class="block py-2 hover:text-red-500">Logout</a>
-            </li>
-            <?php else: ?>
-            <li class="pt-2 mt-2 border-t border-boutique-50">
-                <a href="<?= $basePath ?>auth/login.php" class="block py-2 hover:text-boutique-600">Login</a>
-            </li>
-            <li>
-                <a href="<?= $basePath ?>auth/register.php" class="block py-2 hover:text-boutique-600">Register</a>
-            </li>
-            <?php endif; ?>
-        </ul>
+    <div class="zh-mob-menu" id="zhMob">
+        <a href="<?= $basePath ?>index.php#suites">Our Suites <span>→</span></a>
+        <a href="<?= $basePath ?>index.php#rules">Policies <span>→</span></a>
+        <a href="<?= $basePath ?>index.php#location">Location <span>→</span></a>
+        <?php if (!empty($_SESSION['admin_id'])): ?>
+            <a href="<?= $basePath ?>admin/dashboard.php">Admin <span>→</span></a>
+            <a href="<?= $basePath ?>auth/logout.php" class="zh-mob-logout">Logout</a>
+        <?php elseif (!empty($_SESSION['user_id'])): ?>
+            <a href="<?= $basePath ?>customer/my_bookings.php">My Bookings <span>→</span></a>
+            <a href="<?= $basePath ?>auth/logout.php" class="zh-mob-logout">Logout</a>
+        <?php else: ?>
+            <a href="<?= $basePath ?>auth/login.php">Login</a>
+            <a href="<?= $basePath ?>auth/register.php">Register</a>
+        <?php endif; ?>
+        <a href="<?= $basePath ?>index.php#booking-widget" class="zh-mob-book">Book Now</a>
     </div>
 </nav>
 
 <script>
-    (function () {
-        var btn  = document.getElementById('menuToggle');
-        var menu = document.getElementById('mobileMenu');
-        var icon = document.getElementById('menuIcon');
-        
-        btn.addEventListener('click', function () {
-            menu.classList.toggle('hidden');
-            
-            // Swap hamburger to X icon when opened
-            if (menu.classList.contains('hidden')) {
-                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            } else {
-                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
-            }
-        });
-        
-        // Close menu on link click
-        menu.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                menu.classList.add('hidden');
-                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
-            });
-        });
-    })();
+(function(){
+    var b=document.getElementById('zhBtn'),m=document.getElementById('zhMob'),i=document.getElementById('zhIco');
+    b.addEventListener('click',function(){
+        m.classList.toggle('open');
+        i.querySelector('path').setAttribute('d',m.classList.contains('open')?'M6 18L18 6M6 6l12 12':'M4 6h16M4 12h16M4 18h16');
+    });
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');i.querySelector('path').setAttribute('d','M4 6h16M4 12h16M4 18h16');});});
+})();
 </script>
 </header>
