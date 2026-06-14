@@ -1,0 +1,45 @@
+# ============================================================
+# Zayin Guest House — Apache Configuration
+# Compatible with InfinityFree (Apache + PHP)
+# ============================================================
+
+# Disable directory listing (security: hides file list)
+Options -Indexes
+
+# Default entry point
+DirectoryIndex index.php index.html
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# ============================================================
+# Protect sensitive files from direct browser access
+# ============================================================
+<FilesMatch "^(config\.php|config\.example\.php|database\.sql|\.gitignore|\.env|README\.md)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Block access to the includes folder entirely
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# ============================================================
+# Security headers
+# ============================================================
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ============================================================
+# PHP settings (InfinityFree compatible)
+# ============================================================
+<IfModule mod_php7.c>
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 60
+</IfModule>
