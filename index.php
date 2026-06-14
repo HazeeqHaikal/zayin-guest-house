@@ -110,7 +110,7 @@ include 'includes/config.php';
             <div class="min-w-0">
                 <label for="heroCheckIn" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Check-in</label>
                 <input type="date" name="check_in" id="heroCheckIn" required
-                       min="<?= date('Y-m-d') ?>"
+                       min="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d') ?>"
                        class="w-full min-w-0 border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm">
             </div>
             <div class="min-w-0">
