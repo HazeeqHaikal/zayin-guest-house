@@ -3,69 +3,78 @@
 <!-- ============================================================
      Footer
 ============================================================ -->
-<footer class="bg-stone-900 text-stone-400 mt-20">
-    <div class="max-w-6xl mx-auto px-4 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<footer class="bg-boutique-900 text-slate-400 pt-20 pb-10 border-t-4 border-boutique-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-20">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8">
 
-            <!-- Brand -->
-            <div>
-                <h3 class="text-white font-bold text-lg mb-3">Zayin Guest House</h3>
-                <p class="text-sm leading-relaxed text-stone-400">
-                    Comfortable and affordable accommodation for families,
-                    corporate guests, and travelers. Book directly with us
-                    for the best rates.
+            <!-- Brand (col-span-5) -->
+            <div class="md:col-span-12 lg:col-span-5">
+                <h3 class="text-white font-serif text-3xl mb-4">
+                    Zayin <br><span class="italic text-boutique-400 font-light text-2xl">Guest House</span>
+                </h3>
+                <p class="text-sm leading-relaxed text-slate-400 max-w-sm mb-6">
+                    A sanctuary of comfort and affordability. Designed for families, solo travelers, and corporate stays looking for a quiet retreat. Book directly with us for the best rates.
                 </p>
-                <p class="mt-4 text-sm text-stone-500">
-                    📍 <span id="footer-address">Malaysia</span>
+                <p class="text-sm text-slate-400 flex items-start gap-3">
+                    <svg class="w-5 h-5 text-boutique-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <span id="footer-address" class="leading-relaxed">[Street Address],<br>[City, Postcode], Malaysia</span>
                 </p>
             </div>
 
-            <!-- Quick Links -->
-            <div>
-                <h3 class="text-white font-semibold text-base mb-3">Quick Links</h3>
-                <ul class="text-sm space-y-2">
-                    <li><a href="<?= $basePath ?>index.php#rooms"      class="hover:text-white transition">Rooms &amp; Rates</a></li>
-                    <li><a href="<?= $basePath ?>index.php#amenities"  class="hover:text-white transition">Amenities</a></li>
-                    <li><a href="<?= $basePath ?>index.php#rules"      class="hover:text-white transition">House Rules</a></li>
-                    <li><a href="<?= $basePath ?>index.php#location"   class="hover:text-white transition">Location &amp; Directions</a></li>
-                    <li><a href="<?= $basePath ?>index.php#booking"    class="hover:text-white transition">Book Now</a></li>
+            <!-- Quick Links (col-span-3) -->
+            <div class="md:col-span-6 lg:col-span-3 lg:pl-8">
+                <h4 class="text-white font-serif text-xl mb-6">Explore</h4>
+                <ul class="text-sm space-y-4">
+                    <li><a href="<?= $basePath ?>index.php#suites" class="hover:text-white hover:translate-x-1 inline-block transition-all">Our Suites</a></li>
+                    <li><a href="<?= $basePath ?>index.php#rules" class="hover:text-white hover:translate-x-1 inline-block transition-all">House Policies</a></li>
+                    <li><a href="<?= $basePath ?>index.php#location" class="hover:text-white hover:translate-x-1 inline-block transition-all">Location &amp; Map</a></li>
                 </ul>
             </div>
 
-            <!-- Contact -->
-            <div>
-                <h3 class="text-white font-semibold text-base mb-3">Contact Us</h3>
-                <ul class="text-sm space-y-3">
+            <!-- Contact (col-span-4) -->
+            <div class="md:col-span-6 lg:col-span-4">
+                <h4 class="text-white font-serif text-xl mb-6">Connect</h4>
+                <ul class="text-sm space-y-4">
                     <li>
                         <a href="https://wa.me/60XXXXXXXXXX?text=Hi%2C+I'd+like+to+enquire+about+room+availability."
                            target="_blank" rel="noopener"
-                           class="flex items-center gap-2 hover:text-white transition">
-                            <span class="text-green-400">●</span> WhatsApp Us
+                           class="flex items-center gap-3 hover:text-white transition-colors group">
+                            <span class="w-8 h-8 rounded-full bg-boutique-800 flex items-center justify-center text-boutique-400 group-hover:bg-boutique-600 group-hover:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                            </span>
+                            WhatsApp Enquiry
                         </a>
                     </li>
                     <li>
                         <a href="mailto:zayinguesthouse@gmail.com"
-                           class="flex items-center gap-2 hover:text-white transition">
-                            <span class="text-amber-400">●</span> zayinguesthouse@gmail.com
+                           class="flex items-center gap-3 hover:text-white transition-colors group">
+                            <span class="w-8 h-8 rounded-full bg-boutique-800 flex items-center justify-center text-boutique-400 group-hover:bg-boutique-600 group-hover:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </span>
+                            zayinguesthouse@gmail.com
                         </a>
                     </li>
                 </ul>
 
-                <div class="mt-5 pt-5 border-t border-stone-700">
-                    <p class="text-xs text-stone-500">Check-in: <span class="text-stone-300 font-medium">3:00 PM</span></p>
-                    <p class="text-xs text-stone-500 mt-1">Check-out: <span class="text-stone-300 font-medium">12:00 PM</span></p>
+                <!-- Check in/out Box -->
+                <div class="mt-8 p-5 bg-boutique-800/50 border border-boutique-800 grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest text-boutique-400 mb-1">Check-in</p>
+                        <p class="text-white text-sm font-medium">3:00 PM</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase tracking-widest text-boutique-400 mb-1">Check-out</p>
+                        <p class="text-white text-sm font-medium">12:00 PM</p>
+                    </div>
                 </div>
             </div>
 
         </div>
 
         <!-- Bottom bar -->
-        <div class="border-t border-stone-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-stone-600">
+        <div class="mt-16 pt-8 border-t border-boutique-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wider text-slate-500">
             <p>&copy; <?= date('Y') ?> Zayin Guest House. All rights reserved.</p>
-            <p>Built by <a href="https://wa.me/60112432697" class="hover:text-stone-400 transition">Hazeeq Programming</a></p>
+            <p>Built by <a href="https://wa.me/60112432697" class="text-boutique-400 hover:text-white transition-colors">Hazeeq Programming</a></p>
         </div>
     </div>
 </footer>
-
-</body>
-</html>

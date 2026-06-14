@@ -1,112 +1,105 @@
-<?php
-// $basePath is set by the including page to handle relative paths at different folder depths.
-// Root pages (index.php):     $basePath = '';
-// Nested pages (admin/, guest/): $basePath = '../';
-$basePath = isset($basePath) ? $basePath : '';
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($pageTitle) ? htmlspecialchars($pageTitle) . ' — Zayin Guest House' : 'Zayin Guest House' ?></title>
-    <meta name="description" content="<?= isset($pageDesc) ? htmlspecialchars($pageDesc) : 'Zayin Guest House — Comfortable and affordable rooms for families, travelers, and corporate guests.' ?>">
+<?php $basePath = isset($basePath) ? $basePath : ''; ?>
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="<?= isset($pageTitle) ? htmlspecialchars($pageTitle) . ' — Zayin Guest House' : 'Zayin Guest House' ?>">
-    <meta property="og:description" content="Comfortable and affordable accommodation. Book directly with us for the best rates.">
-    <meta property="og:type" content="website">
-
-    <!-- TailwindCSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            DEFAULT: '#92400e',
-                            light:   '#b45309',
-                            dark:    '#78350f',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        /* Smooth accordion transition */
-        details > div { animation: fadeDown 0.2s ease; }
-        @keyframes fadeDown {
-            from { opacity: 0; transform: translateY(-6px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-</head>
-<body class="bg-stone-50 text-stone-800 antialiased">
-
-<!-- ============================================================
-     Navigation
-============================================================ -->
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+<header class="bg-white/95 backdrop-blur-md border-b border-boutique-100 sticky top-0 z-50 transition-all">
+<nav>
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 py-4 flex items-center justify-between">
 
         <!-- Logo / Brand -->
-        <a href="<?= $basePath ?>index.php" class="flex items-center gap-2">
+        <a href="<?= $basePath ?>index.php" class="flex items-center gap-3 group">
             <img src="<?= $basePath ?>assets/logo.png"
                  alt="Zayin Guest House"
-                 class="h-10 w-auto"
+                 class="h-10 w-auto group-hover:opacity-80 transition-opacity"
                  onerror="this.style.display='none'">
-            <span class="font-bold text-xl text-amber-800 leading-tight">Zayin<br><span class="font-normal text-sm tracking-wide text-stone-500">Guest House</span></span>
+            <span class="font-serif text-2xl text-boutique-800 leading-none">
+                Zayin<br>
+                <span class="italic font-light text-sm text-boutique-400 tracking-wide">Guest House</span>
+            </span>
         </a>
 
         <!-- Desktop Nav -->
-        <ul class="hidden md:flex items-center gap-6 text-sm font-medium text-stone-600">
-            <li><a href="<?= $basePath ?>index.php#rooms"      class="hover:text-amber-800 transition">Rooms</a></li>
-            <li><a href="<?= $basePath ?>index.php#amenities"  class="hover:text-amber-800 transition">Amenities</a></li>
-            <li><a href="<?= $basePath ?>index.php#rules"      class="hover:text-amber-800 transition">House Rules</a></li>
-            <li><a href="<?= $basePath ?>index.php#location"   class="hover:text-amber-800 transition">Location</a></li>
+        <ul class="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase text-slate-500">
+            <li><a href="<?= $basePath ?>index.php#suites" class="hover:text-boutique-600 transition-colors">Our Suites</a></li>
+            <li><a href="<?= $basePath ?>index.php#rules" class="hover:text-boutique-600 transition-colors">Policies</a></li>
+            <li><a href="<?= $basePath ?>index.php#location" class="hover:text-boutique-600 transition-colors">Location</a></li>
             <li>
-                <a href="<?= $basePath ?>index.php#booking"
-                   class="bg-amber-800 text-white px-5 py-2 rounded-lg hover:bg-amber-900 transition font-semibold">
+                <a href="<?= $basePath ?>index.php#booking-widget"
+                   class="bg-boutique-800 text-white px-6 py-3 hover:bg-boutique-900 transition-colors inline-block text-center shadow-sm">
                     Book Now
                 </a>
             </li>
+            <?php if (!empty($_SESSION['admin_id'])): ?>
+            <li class="flex items-center gap-4 pl-4 border-l border-slate-200">
+                <a href="<?= $basePath ?>admin/dashboard.php" class="hover:text-boutique-600 transition-colors">Admin Panel</a>
+                <a href="<?= $basePath ?>auth/logout.php" class="hover:text-red-500 transition-colors">Logout</a>
+            </li>
+            <?php elseif (!empty($_SESSION['user_id'])): ?>
+            <li class="flex items-center gap-4 pl-4 border-l border-slate-200">
+                <span class="text-boutique-600 normal-case tracking-normal font-semibold text-xs">
+                    Hi, <?= htmlspecialchars(explode(' ', $_SESSION['user_name'])[0]) ?>
+                </span>
+                <a href="<?= $basePath ?>customer/my_bookings.php" class="hover:text-boutique-600 transition-colors">My Bookings</a>
+                <a href="<?= $basePath ?>auth/logout.php" class="hover:text-red-500 transition-colors">Logout</a>
+            </li>
+            <?php else: ?>
+            <li class="flex items-center gap-3 pl-4 border-l border-slate-200">
+                <a href="<?= $basePath ?>auth/login.php" class="hover:text-boutique-600 transition-colors">Login</a>
+                <a href="<?= $basePath ?>auth/register.php"
+                   class="border border-boutique-600 text-boutique-600 px-4 py-2 hover:bg-boutique-600 hover:text-white transition-colors">
+                    Register
+                </a>
+            </li>
+            <?php endif; ?>
         </ul>
 
         <!-- Mobile menu button -->
         <button id="menuToggle" aria-label="Open menu"
-                class="md:hidden p-2 rounded-lg text-stone-500 hover:bg-stone-100 transition">
+                class="md:hidden p-2 text-boutique-800 hover:bg-boutique-50 transition-colors rounded-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                <path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                       d="M4 6h16M4 12h16M4 18h16"/>
             </svg>
         </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-stone-100 px-4 pb-4">
-        <ul class="flex flex-col gap-1 text-sm font-medium text-stone-600 pt-2">
-            <li><a href="<?= $basePath ?>index.php#rooms"     class="block py-2 px-3 rounded-lg hover:bg-stone-50 hover:text-amber-800">Rooms</a></li>
-            <li><a href="<?= $basePath ?>index.php#amenities" class="block py-2 px-3 rounded-lg hover:bg-stone-50 hover:text-amber-800">Amenities</a></li>
-            <li><a href="<?= $basePath ?>index.php#rules"     class="block py-2 px-3 rounded-lg hover:bg-stone-50 hover:text-amber-800">House Rules</a></li>
-            <li><a href="<?= $basePath ?>index.php#location"  class="block py-2 px-3 rounded-lg hover:bg-stone-50 hover:text-amber-800">Location</a></li>
-            <li class="pt-1">
-                <a href="<?= $basePath ?>index.php#booking"
-                   class="block text-center bg-amber-800 text-white py-2 px-3 rounded-lg hover:bg-amber-900 font-semibold">
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-boutique-100 px-6 pb-6 shadow-2xl absolute w-full left-0 top-full">
+        <ul class="flex flex-col gap-2 text-xs font-semibold tracking-widest uppercase text-slate-500 pt-4">
+            <li><a href="<?= $basePath ?>index.php#suites" class="block py-3 border-b border-boutique-50 hover:text-boutique-600">Our Suites</a></li>
+            <li><a href="<?= $basePath ?>index.php#rules" class="block py-3 border-b border-boutique-50 hover:text-boutique-600">Policies</a></li>
+            <li><a href="<?= $basePath ?>index.php#location" class="block py-3 border-b border-boutique-50 hover:text-boutique-600">Location</a></li>
+            <li>
+                <a href="<?= $basePath ?>index.php#booking-widget"
+                   class="block text-center bg-boutique-800 text-white py-4 hover:bg-boutique-900 transition-colors shadow-sm mt-2">
                     Book Now
                 </a>
             </li>
+            <?php if (!empty($_SESSION['admin_id'])): ?>
+            <li class="pt-2 mt-2 border-t border-boutique-50">
+                <a href="<?= $basePath ?>admin/dashboard.php" class="block py-2 hover:text-boutique-600">Admin Panel</a>
+            </li>
+            <li>
+                <a href="<?= $basePath ?>auth/logout.php" class="block py-2 hover:text-red-500">Logout</a>
+            </li>
+            <?php elseif (!empty($_SESSION['user_id'])): ?>
+            <li class="pt-3 mt-2 border-t border-boutique-50">
+                <span class="block py-1 text-boutique-600 normal-case tracking-normal">
+                    Hi, <?= htmlspecialchars(explode(' ', $_SESSION['user_name'])[0]) ?>
+                </span>
+            </li>
+            <li>
+                <a href="<?= $basePath ?>customer/my_bookings.php" class="block py-2 hover:text-boutique-600">My Bookings</a>
+            </li>
+            <li>
+                <a href="<?= $basePath ?>auth/logout.php" class="block py-2 hover:text-red-500">Logout</a>
+            </li>
+            <?php else: ?>
+            <li class="pt-2 mt-2 border-t border-boutique-50">
+                <a href="<?= $basePath ?>auth/login.php" class="block py-2 hover:text-boutique-600">Login</a>
+            </li>
+            <li>
+                <a href="<?= $basePath ?>auth/register.php" class="block py-2 hover:text-boutique-600">Register</a>
+            </li>
+            <?php endif; ?>
         </ul>
     </div>
 </nav>
@@ -115,14 +108,26 @@ $basePath = isset($basePath) ? $basePath : '';
     (function () {
         var btn  = document.getElementById('menuToggle');
         var menu = document.getElementById('mobileMenu');
+        var icon = document.getElementById('menuIcon');
+        
         btn.addEventListener('click', function () {
             menu.classList.toggle('hidden');
+            
+            // Swap hamburger to X icon when opened
+            if (menu.classList.contains('hidden')) {
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+            } else {
+                icon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+            }
         });
-        // Close on link click
+        
+        // Close menu on link click
         menu.querySelectorAll('a').forEach(function (link) {
             link.addEventListener('click', function () {
                 menu.classList.add('hidden');
+                icon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
             });
         });
     })();
 </script>
+</header>

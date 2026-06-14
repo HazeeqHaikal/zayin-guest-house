@@ -62,28 +62,33 @@
 ## Development Phases
 
 ```
-Phase 1 — Setup & Project Structure
+Phase 1 — Setup & Project Structure            ✅ Done
   └── Folder structure, database schema, wireframe
 
-Phase 2 — Frontend (Public Pages)
+Phase 2 — Frontend (Public Pages)              ✅ Done
   └── Landing page, gallery, room info, map, house rules
 
-Phase 3 — Booking System
+Phase 3 — Booking System                       ✅ Done
   └── Live calendar, availability check, booking form
 
-Phase 4 — Fullhouse Override
+Phase 3.5 — Auth System                        ✅ Done
+  └── Login, register, logout — shared for customers & admin
+  └── Unified `users` table (walk-in guests + registered customers)
+  └── Customer booking history (My Bookings page)
+
+Phase 4 — Fullhouse Override                   ⏳ Pending
   └── Block dates module for fullhouse-only bookings
 
-Phase 5 — Automatic Invoice & Receipt
+Phase 5 — Automatic Invoice & Receipt          ⏳ Pending
   └── PDF/receipt generation after booking is confirmed
 
-Phase 6 — Admin Dashboard
+Phase 6 — Admin Dashboard                      ⏳ Pending
   └── Login, manage bookings, sales reports
 
-Phase 7 — Testing & Stabilisation (Month 3)
+Phase 7 — Testing & Stabilisation (Month 3)    ⏳ Pending
   └── Bug fixes, UAT, pre-launch preparation
 
-Phase 8 — Launch
+Phase 8 — Launch                               ⏳ Pending
   └── Deploy to InfinityFree, domain setup
 ```
 
@@ -96,29 +101,39 @@ Follows the **Single File Approach** — each page combines PHP, HTML, CSS, and 
 ```
 zayin-guesthouse/
 │
-├── 📁 admin/                    # Admin interface & functions
+├── 📁 admin/                    # Admin interface & functions (Phase 6)
 │   ├── dashboard.php            # Main admin dashboard
 │   ├── manage_bookings.php      # View and manage all bookings
 │   ├── manage_rooms.php         # Manage room details
 │   ├── fullhouse.php            # Set Fullhouse Override dates
 │   └── reports.php              # Basic sales reports
 │
-├── 📁 guest/                    # Guest-facing pages (public)
-│   ├── booking.php              # Booking form & processing
-│   ├── check_availability.php   # Room availability check (AJAX)
-│   └── invoice.php              # Generate & display invoice/receipt
+├── 📁 auth/                     # Shared authentication (login/register/logout)
+│   ├── login.php                # Unified login — customers (email/phone) + admin (username)
+│   ├── register.php             # Customer account registration
+│   └── logout.php               # Clear session, redirect to home
+│
+├── 📁 customer/                 # Logged-in customer pages
+│   └── my_bookings.php          # View own booking history
+│
+├── 📁 guest/                    # Public booking flow
+│   ├── book.php                 # Room detail + booking form (Step 1 & 2)
+│   ├── process_booking.php      # Booking form handler
+│   ├── confirmation.php         # Booking confirmation & deposit info
+│   └── search.php               # Room availability search results
 │
 ├── 📁 includes/                 # Shared reusable components
-│   ├── config.php               # Database connection (PHP only, no HTML)
-│   ├── header.php               # <nav> tag + CDN links (TailwindCSS, scripts)
+│   ├── config.php               # Database connection + session start (PHP only)
+│   ├── config.example.php       # Template for config.php (committed to Git)
+│   ├── header.php               # <nav> with auth-aware links (TailwindCSS CDN)
 │   └── footer.php               # <footer> tag (copyright, links)
 │
-├── 📁 assets/                   # Images only (logo, banner, room photos)
+├── 📁 assets/                   # Static assets — images only
 │   ├── logo.png
 │   ├── banner.jpg
-│   └── rooms/                   # Individual room images
+│   └── rooms/                   # Individual room photos (room-1.jpg … room-8.jpg)
 │
-├── database.sql                 # All CREATE TABLE & initial INSERT statements
+├── database.sql                 # Full schema + seed data — import via phpMyAdmin
 ├── index.php                    # Main landing page
 └── README.md
 ```
@@ -166,12 +181,20 @@ zayin-guesthouse/
 
 | Table | Description |
 |---|---|
-| `rooms` | Details of all 8 rooms (name, price, image, capacity) |
-| `bookings` | All booking records |
-| `guests` | Guest information |
-| `blocked_dates` | Dates blocked for Fullhouse Override |
-| `invoices` | Generated invoice/receipt records |
-| `admin_users` | Admin panel accounts |
+| `rooms` | Details of all 8 rooms (name, type, price, capacity, image) |
+| `users` | **Unified table** — walk-in guests (no password) + registered customers (with password). `password_hash NULL` = walk-in only |
+| `bookings` | All booking records — links to `users` via `user_id` and to `rooms` via `room_id` |
+| `blocked_dates` | Dates blocked for Fullhouse Override or maintenance |
+| `invoices` | Generated invoice/receipt records per booking |
+| `admin_users` | Admin panel accounts (separate from public `users`) |
+
+### User Type Logic
+
+| Type | `password_hash` | Can log in? | Booking history? |
+|---|---|---|---|
+| Walk-in guest | `NULL` | No | No |
+| Registered customer | bcrypt hash | Yes | Yes (`customer/my_bookings.php`) |
+| Admin | bcrypt hash (in `admin_users`) | Yes | N/A — manages all bookings |
 
 ---
 
