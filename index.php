@@ -55,6 +55,15 @@ include 'includes/config.php';
         /* Subtle image zoom on hover for room cards */
         .room-img-wrapper overflow-hidden img { transition: transform 0.7s ease; }
         .room-card:hover .room-img-wrapper img { transform: scale(1.05); }
+
+        /* iOS Safari fix: date inputs ignore width:100% without this */
+        input[type="date"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body class="bg-boutique-50 text-slate-700 antialiased selection:bg-boutique-600 selection:text-white overflow-x-hidden">
