@@ -57,7 +57,7 @@ include 'includes/config.php';
         .room-card:hover .room-img-wrapper img { transform: scale(1.05); }
     </style>
 </head>
-<body class="bg-boutique-50 text-slate-700 antialiased selection:bg-boutique-600 selection:text-white">
+<body class="bg-boutique-50 text-slate-700 antialiased selection:bg-boutique-600 selection:text-white overflow-x-hidden">
 
 <?php include 'includes/header.php'; ?>
 
@@ -98,22 +98,22 @@ include 'includes/config.php';
     <div class="relative z-10 w-full max-w-4xl mx-auto px-4 lg:px-6">
         <form action="guest/search.php" method="GET" id="heroSearchForm"
               class="bg-white shadow-2xl p-5 lg:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-            <div>
+            <div class="min-w-0">
                 <label for="heroCheckIn" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Check-in</label>
                 <input type="date" name="check_in" id="heroCheckIn" required
                        min="<?= date('Y-m-d') ?>"
-                       class="w-full border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm">
+                       class="w-full min-w-0 border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm">
             </div>
-            <div>
+            <div class="min-w-0">
                 <label for="heroCheckOut" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Check-out</label>
                 <input type="date" name="check_out" id="heroCheckOut" required
                        min="<?= date('Y-m-d', strtotime('+1 day')) ?>"
-                       class="w-full border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm">
+                       class="w-full min-w-0 border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm">
             </div>
-            <div>
+            <div class="min-w-0">
                 <label for="heroGuests" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Guests</label>
                 <select name="guests" id="heroGuests"
-                        class="w-full border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm bg-white">
+                        class="w-full min-w-0 border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm bg-white">
                     <option value="1">1 Guest</option>
                     <option value="2" selected>2 Guests</option>
                     <option value="3">3 Guests</option>
@@ -121,10 +121,10 @@ include 'includes/config.php';
                     <option value="5">5 Guests</option>
                 </select>
             </div>
-            <div>
+            <div class="min-w-0">
                 <button type="submit"
                         class="w-full bg-boutique-600 hover:bg-boutique-800 text-white py-3 text-sm font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     Check Availability
                 </button>
             </div>
