@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Welcome';
-$pageDesc  = 'Zayin Guest House — 8 beautifully designed rooms with a private swimming pool in Jitra, Kedah. Perfect for families, travelers, and corporate guests. Book directly for the best rates.';
+$pageDesc  = 'Zayin Guest House — 8 beautifully designed rooms with a swimming pool in Jitra, Kedah. Perfect for families, travelers, and corporate guests. Book directly for the best rates.';
 $basePath  = '';
 include 'includes/config.php'; 
 ?>
@@ -77,7 +77,7 @@ include 'includes/config.php';
 <!-- ============================================================
      HERO + BOOKING SEARCH WIDGET
 ============================================================ -->
-<section id="booking-widget" class="relative flex flex-col items-center justify-center bg-boutique-900 overflow-hidden min-h-[85vh] py-20 lg:py-24 scroll-mt-0">
+<section id="booking-widget" class="relative flex flex-col items-center justify-center bg-boutique-900 overflow-hidden min-h-[90vh] py-20 pb-16 lg:py-24 scroll-mt-0">
     <img src="assets/banner.jpg" alt="Zayin Guest House"
          class="absolute inset-0 w-full h-full object-cover"
          onerror="this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'">
@@ -89,29 +89,31 @@ include 'includes/config.php';
             Zayin <br><span class="italic text-boutique-400 font-light">Guest House</span>
         </h1>
         <p class="text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
-            8 beautifully designed rooms with a private swimming pool in Jitra, Kedah. Book directly for the best rates — no fees, no middlemen.
+            8 beautifully designed rooms with a swimming pool in Jitra, Kedah. Book directly for the best rates — no fees, no middlemen.
         </p>
     </div>
 
-    <div class="relative z-10 w-full max-w-5xl mx-auto px-4 lg:px-6">
+    <!-- Widget wrapper: full section width, padding creates the side margins -->
+    <div class="relative z-10 w-full px-4 sm:px-8 lg:px-12">
+    <div class="max-w-5xl mx-auto">
         <form action="guest/search.php" method="GET" id="heroSearchForm"
-              class="bg-white shadow-2xl p-5 lg:p-6 flex flex-col sm:flex-row gap-0 items-stretch">
+              class="bg-white shadow-2xl flex flex-col sm:flex-row items-stretch overflow-hidden">
             <!-- Check-in -->
-            <div class="flex-1 min-w-0 px-4 py-3 border-b sm:border-b-0 sm:border-r border-slate-100">
+            <div class="flex-1 min-w-0 px-5 py-4 border-b border-slate-100 sm:border-b-0 sm:border-r">
                 <label for="heroCheckIn" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-1.5">Check-in</label>
                 <input type="date" name="check_in" id="heroCheckIn" required
                        min="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d') ?>"
                        class="w-full border-0 p-0 text-boutique-800 font-medium focus:outline-none text-sm bg-transparent">
             </div>
             <!-- Check-out -->
-            <div class="flex-1 min-w-0 px-4 py-3 border-b sm:border-b-0 sm:border-r border-slate-100">
+            <div class="flex-1 min-w-0 px-5 py-4 border-b border-slate-100 sm:border-b-0 sm:border-r">
                 <label for="heroCheckOut" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-1.5">Check-out</label>
                 <input type="date" name="check_out" id="heroCheckOut" required
                        min="<?= date('Y-m-d', strtotime('+1 day')) ?>"
                        class="w-full border-0 p-0 text-boutique-800 font-medium focus:outline-none text-sm bg-transparent">
             </div>
             <!-- Guests -->
-            <div class="flex-1 min-w-0 px-4 py-3 border-b sm:border-b-0 sm:border-r border-slate-100">
+            <div class="flex-1 min-w-0 px-5 py-4 border-b border-slate-100 sm:border-b-0 sm:border-r">
                 <label for="heroGuests" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-1.5">Guests</label>
                 <select name="guests" id="heroGuests"
                         class="w-full border-0 p-0 text-boutique-800 font-medium focus:outline-none text-sm bg-transparent appearance-none">
@@ -125,7 +127,7 @@ include 'includes/config.php';
             <!-- Submit -->
             <div class="shrink-0">
                 <button type="submit"
-                        class="h-full w-full sm:w-auto bg-boutique-600 hover:bg-boutique-800 text-white px-8 py-4 text-sm font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
+                        class="w-full sm:w-auto h-full bg-boutique-600 hover:bg-boutique-800 text-white px-8 py-4 text-sm font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
                     <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     Check Availability
                 </button>
@@ -134,6 +136,7 @@ include 'includes/config.php';
         <p class="text-center text-white/40 text-xs mt-4 tracking-wide">
             Select your dates to see real-time availability and pricing
         </p>
+    </div>
     </div>
 </section>
 
@@ -170,7 +173,7 @@ include 'includes/config.php';
                     Nestled in the peaceful surroundings of Tanjung Pauh, Jitra, Zayin Guest House welcomes you with 8 beautifully designed rooms across three unique concepts — Modern, Cabin, and Traditional.
                 </p>
                 <p class="text-base text-boutique-100 leading-relaxed font-light">
-                    Take a dip in our private pool, gather in the open kitchen, or simply relax in our gazebo. Book directly with us to secure the best rates without hidden fees.
+                    Take a dip in our swimming pool, gather in the open kitchen, or simply relax in our gazebo. Book directly with us to secure the best rates without hidden fees.
                 </p>
 
                 <!-- Quick Stats -->
@@ -196,10 +199,10 @@ include 'includes/config.php';
             <!-- Amenities Grid -->
             <div class="lg:pl-14 border-t border-boutique-600 pt-8 lg:border-t-0 lg:pt-0">
                 <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-6 block border-b border-boutique-600 pb-4">The Amenities</span>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                <ul class="grid grid-cols-2 gap-x-6 gap-y-4">
                     <?php
                     $amenities = [
-                        ['label' => 'Private Swimming Pool', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>'],
+                        ['label' => 'Swimming Pool', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>'],
                         ['label' => 'Open Kitchen', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M3 14h18M5 6h.01M8 6h.01M11 6h.01M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>'],
                         ['label' => 'Free Wi-Fi (800 Mbps)', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>'],
                         ['label' => 'Air Conditioning', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3v2.25M14.25 3v2.25M4.5 7.5h15M4.5 12h15M4.5 16.5h15M9.75 21v-2.25M14.25 21v-2.25"/>'],
@@ -211,13 +214,13 @@ include 'includes/config.php';
                         ['label' => 'Entertainment Corner', 'soon' => true, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>'],
                     ];
                     foreach ($amenities as $item): ?>
-                    <li class="flex items-center gap-3 text-boutique-50 text-sm">
-                        <span class="shrink-0 w-8 h-8 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $item['icon'] ?></svg>
+                    <li class="flex items-start gap-2 text-boutique-50 text-xs sm:text-sm">
+                        <span class="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400 mt-0.5">
+                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $item['icon'] ?></svg>
                         </span>
-                        <span class="tracking-wide"><?= $item['label'] ?></span>
+                        <span class="tracking-wide leading-snug pt-1"><?= $item['label'] ?></span>
                         <?php if (!empty($item['soon'])): ?>
-                        <span class="text-xs bg-boutique-600/30 text-boutique-400 px-2 py-0.5 rounded-full">Soon</span>
+                        <span class="text-xs bg-boutique-600/30 text-boutique-400 px-1.5 py-0.5 rounded-full shrink-0">Soon</span>
                         <?php endif; ?>
                     </li>
                     <?php endforeach; ?>
@@ -263,7 +266,7 @@ include 'includes/config.php';
         $facilities = [
             [
                 'name' => 'Swimming Pool',
-                'desc' => 'Open daily 7–11am & 5–10pm. Cool off and unwind in our clean, private pool.',
+                'desc' => 'Open daily 7–11am & 5–10pm. Separate pools for adults and kids, complete with a water slide. Cool off and unwind anytime.',
                 'hours' => '7–11am · 5–10pm',
                 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>',
                 'image' => '',
