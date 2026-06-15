@@ -158,16 +158,16 @@ include 'includes/config.php';
 </script>
 
 <!-- ============================================================
-     THE EXPERIENCE (About + Amenities)
+     THE STORY
 ============================================================ -->
 <section class="py-16 lg:py-20 px-6 lg:px-20 bg-boutique-800 text-boutique-100">
     <div class="max-w-7xl mx-auto">
 
-        <!-- Top: About (left) + Amenities (right) — balanced columns -->
-        <div class="grid grid-cols-1 lg:grid-cols-[5fr_1px_7fr] gap-0 lg:gap-0 items-start mb-0">
+        <!-- Two-column: About (left) + Room Concepts (right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-12">
 
-            <!-- About Text -->
-            <div class="lg:pr-14 pb-10 lg:pb-0">
+            <!-- Left: About Text + Stats -->
+            <div>
                 <h2 class="text-3xl lg:text-5xl font-serif text-white mb-6">A Home Away <br><span class="italic text-boutique-400">from Home</span></h2>
                 <p class="text-base text-boutique-100 leading-relaxed mb-4 font-light">
                     Nestled in the peaceful surroundings of Tanjung Pauh, Jitra, Zayin Guest House welcomes you with 8 beautifully designed rooms across three unique concepts — Modern, Cabin, and Traditional.
@@ -193,44 +193,38 @@ include 'includes/config.php';
                 </div>
             </div>
 
-            <!-- Vertical Divider (desktop only) -->
-            <div class="hidden lg:block bg-boutique-600 self-stretch mx-0"></div>
-
-            <!-- Amenities Grid -->
-            <div class="lg:pl-14 border-t border-boutique-600 pt-8 lg:border-t-0 lg:pt-0">
-                <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-6 block border-b border-boutique-600 pb-4">The Amenities</span>
-                <ul class="grid grid-cols-2 gap-x-6 gap-y-4">
-                    <?php
-                    $amenities = [
-                        ['label' => 'Swimming Pool', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>'],
-                        ['label' => 'Open Kitchen', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M3 14h18M5 6h.01M8 6h.01M11 6h.01M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>'],
-                        ['label' => 'Free Wi-Fi (800 Mbps)', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>'],
-                        ['label' => 'Air Conditioning', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3v2.25M14.25 3v2.25M4.5 7.5h15M4.5 12h15M4.5 16.5h15M9.75 21v-2.25M14.25 21v-2.25"/>'],
-                        ['label' => 'Hot Water Showers', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m8-9h1M3 12H2m14.5-6.5l-.7.7M6.2 17.8l-.7.7M17.8 17.8l.7.7M6.9 6.2l-.7-.7M12 7a5 5 0 110 10A5 5 0 0112 7z"/>'],
-                        ['label' => 'Surau &amp; Prayer Space', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L4 7v13h16V7L12 2zm0 0v18M4 7h16"/>'],
-                        ['label' => 'Gazebo &amp; BBQ Pit', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>'],
-                        ['label' => 'Free Parking', 'icon' => '<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7h4a3 3 0 010 6H9"/>'],
-                        ['label' => 'Petanque Court', 'icon' => '<circle cx="12" cy="12" r="9" stroke-width="1.5"/><circle cx="9" cy="10" r="2" stroke-width="1.5"/><circle cx="15" cy="14" r="2" stroke-width="1.5"/>'],
-                        ['label' => 'Entertainment Corner', 'soon' => true, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>'],
-                    ];
-                    foreach ($amenities as $item): ?>
-                    <li class="flex items-start gap-2 text-boutique-50 text-xs sm:text-sm">
-                        <span class="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400 mt-0.5">
-                            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $item['icon'] ?></svg>
-                        </span>
-                        <span class="tracking-wide leading-snug pt-1"><?= $item['label'] ?></span>
-                        <?php if (!empty($item['soon'])): ?>
-                        <span class="text-xs bg-boutique-600/30 text-boutique-400 px-1.5 py-0.5 rounded-full shrink-0">Soon</span>
-                        <?php endif; ?>
-                    </li>
-                    <?php endforeach; ?>
-                </ul>
+            <!-- Right: Room Concepts -->
+            <div class="border-t border-boutique-600 pt-10 lg:border-t-0 lg:pt-0 lg:border-l lg:border-boutique-600 lg:pl-20">
+                <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-8 block">Three Unique Concepts</span>
+                <div class="space-y-8">
+                    <div class="flex gap-5 items-start group">
+                        <span class="shrink-0 text-4xl font-serif text-boutique-600 font-bold leading-none group-hover:text-boutique-400 transition-colors">01</span>
+                        <div class="border-l border-boutique-600 pl-5">
+                            <h3 class="text-white font-serif text-xl mb-1.5">Modern</h3>
+                            <p class="text-sm text-boutique-100/60 font-light leading-relaxed">Sleek interiors with clean lines and contemporary furnishings — ideal for couples and business travelers seeking a refined stay.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 items-start group">
+                        <span class="shrink-0 text-4xl font-serif text-boutique-600 font-bold leading-none group-hover:text-boutique-400 transition-colors">02</span>
+                        <div class="border-l border-boutique-600 pl-5">
+                            <h3 class="text-white font-serif text-xl mb-1.5">Cabin</h3>
+                            <p class="text-sm text-boutique-100/60 font-light leading-relaxed">Warm wooden tones and cozy textures inspired by nature — perfect for families who want a rustic retreat feel.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 items-start group">
+                        <span class="shrink-0 text-4xl font-serif text-boutique-600 font-bold leading-none group-hover:text-boutique-400 transition-colors">03</span>
+                        <div class="border-l border-boutique-600 pl-5">
+                            <h3 class="text-white font-serif text-xl mb-1.5">Traditional</h3>
+                            <p class="text-sm text-boutique-100/60 font-light leading-relaxed">Rich cultural aesthetics with classic Malay-inspired touches — a soulful space that celebrates local heritage and warmth.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
 
         <!-- Full House Package — full-width strip below both columns -->
-        <div class="mt-12 border-t border-boutique-600 pt-10">
+        <div class="border-t border-boutique-600 pt-10">
             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
                 <div class="shrink-0 w-12 h-12 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 22V12h6v10"/></svg>
@@ -245,6 +239,95 @@ include 'includes/config.php';
                     </a>
                 </div>
             </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     AMENITIES
+============================================================ -->
+<section id="amenities" class="py-16 lg:py-20 bg-boutique-900 scroll-mt-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-20">
+
+        <div class="text-center mb-14">
+            <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-4 block">What's Included</span>
+            <h2 class="text-4xl lg:text-5xl font-serif text-white mb-3">Room <span class="italic text-boutique-400">Amenities</span></h2>
+            <p class="text-boutique-100/60 text-sm max-w-md mx-auto">All units are fully equipped for a comfortable and enjoyable stay.</p>
+        </div>
+
+        <?php
+        $amenity_cats = [
+            [
+                'label' => 'Bedroom & Comfort',
+                'items' => [
+                    ['label' => 'Air Conditioning', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3v2.25M14.25 3v2.25M4.5 7.5h15M4.5 12h15M4.5 16.5h15M9.75 21v-2.25M14.25 21v-2.25"/>'],
+                    ['label' => 'Hot Water Shower', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m8-9h1M3 12H2m14.5-6.5l-.7.7M6.2 17.8l-.7.7M17.8 17.8l.7.7M6.9 6.2l-.7-.7M12 7a5 5 0 110 10A5 5 0 0112 7z"/>'],
+                    ['label' => 'Smart TV', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>'],
+                    ['label' => 'Queen Bed', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v13M21 7v13M3 12h18M6 7h12a1 1 0 011 1v4H5V8a1 1 0 011-1z"/>'],
+                    ['label' => 'Wardrobe', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3h14a1 1 0 011 1v16a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zm7 0v18M9 8v1M15 8v1"/>'],
+                    ['label' => 'Towel Provided', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v2M17 10v2M17 16v2M7 4h10M7 20h10"/>'],
+                ],
+            ],
+            [
+                'label' => 'Kitchen & Dining',
+                'items' => [
+                    ['label' => 'Open Kitchen', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M3 14h18M5 6h.01M8 6h.01M11 6h.01M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>'],
+                    ['label' => 'Rice Cooker', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14a1 1 0 011 1v7a3 3 0 01-3 3H7a3 3 0 01-3-3V9a1 1 0 011-1zm3-4h8M12 4v4"/>'],
+                    ['label' => 'Air Fryer', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l2 4H7L9 3zm-2 4h10v10a2 2 0 01-2 2H9a2 2 0 01-2-2V7zm5 3v4m-2-2h4"/>'],
+                    ['label' => 'Microwave', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1zm12 2h1v4h-1V9zm-9 1h7v2H7v-2z"/>'],
+                    ['label' => 'Blender', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 3h8l2 7H6L8 3zm-2 7l2 11h8l2-11M10 15l2-3 2 3"/>'],
+                    ['label' => 'Refrigerator', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3h14a1 1 0 011 1v16a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zm0 8h14M9 6v3M9 14v3"/>'],
+                ],
+            ],
+            [
+                'label' => 'Recreation & Leisure',
+                'items' => [
+                    ['label' => 'Swimming Pool', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>'],
+                    ['label' => 'Gazebo & BBQ Pit', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>'],
+                    ['label' => 'Petanque Court', 'icon' => '<circle cx="12" cy="12" r="9" stroke-width="1.5"/><circle cx="9" cy="10" r="2" stroke-width="1.5"/><circle cx="15" cy="14" r="2" stroke-width="1.5"/>'],
+                    ['label' => 'Entertainment Corner', 'soon' => true, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>'],
+                ],
+            ],
+            [
+                'label' => 'Connectivity & General',
+                'items' => [
+                    ['label' => 'Free Wi-Fi 800Mbps', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>'],
+                    ['label' => 'Free Parking', 'icon' => '<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7h4a3 3 0 010 6H9"/>'],
+                    ['label' => 'Surau & Prayer Space', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L4 7v13h16V7L12 2zm0 0v18M4 7h16"/>'],
+                ],
+            ],
+        ];
+        ?>
+
+        <div class="space-y-10 lg:space-y-14">
+            <?php foreach ($amenity_cats as $cat): ?>
+            <div>
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-px flex-1 bg-boutique-600/50"></div>
+                    <span class="text-xs font-bold tracking-[0.25em] uppercase text-boutique-400 shrink-0"><?= htmlspecialchars($cat['label']) ?></span>
+                    <div class="h-px flex-1 bg-boutique-600/50"></div>
+                </div>
+                <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-8">
+                    <?php foreach ($cat['items'] as $item): ?>
+                    <div class="flex flex-col items-center gap-3 text-center group">
+                        <div class="relative w-16 h-16 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400 group-hover:bg-boutique-600 group-hover:border-boutique-400 transition-all duration-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $item['icon'] ?></svg>
+                            <?php if (!empty($item['soon'])): ?>
+                            <span class="absolute -top-1 -right-1 w-4 h-4 bg-boutique-600 rounded-full flex items-center justify-center">
+                                <span class="text-white text-[8px] font-bold leading-none">!</span>
+                            </span>
+                            <?php endif; ?>
+                        </div>
+                        <span class="text-[11px] text-boutique-100/70 leading-tight tracking-widest uppercase font-medium"><?= htmlspecialchars($item['label']) ?></span>
+                        <?php if (!empty($item['soon'])): ?>
+                        <span class="text-[10px] text-boutique-400/70 tracking-wide -mt-1">Coming Soon</span>
+                        <?php endif; ?>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
         </div>
 
     </div>
