@@ -250,7 +250,7 @@ $pageTitle = 'Booking Confirmed';
 
     <p class="text-center text-xs text-slate-400 mt-6">
         Questions? Email us at
-        <a href="mailto:zayinguesthouse@gmail.com" class="text-boutique-600 hover:underline">zayinguesthouse@gmail.com</a>
+        <a href="mailto:zayin.guesthouse@gmail.com" class="text-boutique-600 hover:underline">zayin.guesthouse@gmail.com</a>
         or WhatsApp us directly.
     </p>
 
