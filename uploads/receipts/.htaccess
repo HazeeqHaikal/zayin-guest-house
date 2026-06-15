@@ -1,0 +1,6 @@
+# Prevent direct script execution in this directory
+Options -Indexes
+<FilesMatch "\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

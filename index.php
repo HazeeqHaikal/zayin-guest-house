@@ -1,8 +1,7 @@
 <?php
 $pageTitle = 'Welcome';
-$pageDesc  = 'Zayin Guest House — Comfortable and affordable rooms for families, travelers, and corporate guests. Book directly with us for the best rates.';
+$pageDesc  = 'Zayin Guest House — 8 beautifully designed rooms with a private swimming pool in Jitra, Kedah. Perfect for families, travelers, and corporate guests. Book directly for the best rates.';
 $basePath  = '';
-// Assuming this handles your DB connection ($conn)
 include 'includes/config.php'; 
 ?>
 <!DOCTYPE html>
@@ -13,12 +12,10 @@ include 'includes/config.php';
     <title><?= isset($pageTitle) ? htmlspecialchars($pageTitle) . ' — Zayin Guest House' : 'Zayin Guest House' ?></title>
     <meta name="description" content="<?= isset($pageDesc) ? htmlspecialchars($pageDesc) : 'Zayin Guest House — Comfortable and affordable rooms for families, travelers, and corporate guests.' ?>">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="<?= isset($pageTitle) ? htmlspecialchars($pageTitle) . ' — Zayin Guest House' : 'Zayin Guest House' ?>">
     <meta property="og:description" content="Comfortable and affordable accommodation. Book directly with us for the best rates.">
     <meta property="og:type" content="website">
 
-    <!-- TailwindCSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,8 +26,8 @@ include 'includes/config.php';
                             50: '#f4f7f7',
                             100: '#e3ecec',
                             400: '#75a3a3',
-                            600: '#2b7a78', // Teal
-                            800: '#17252a', // Deep Slate
+                            600: '#2b7a78',
+                            800: '#17252a',
                             900: '#0f171e',
                         }
                     },
@@ -43,7 +40,6 @@ include 'includes/config.php';
         }
     </script>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -51,12 +47,8 @@ include 'includes/config.php';
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
-        
-        /* Subtle image zoom on hover for room cards */
-        .room-img-wrapper overflow-hidden img { transition: transform 0.7s ease; }
+        .room-card .room-img-wrapper img { transition: transform 0.7s ease; }
         .room-card:hover .room-img-wrapper img { transform: scale(1.05); }
-
-        /* iOS Safari fix: date inputs ignore width:100% without this */
         input[type="date"] {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -64,15 +56,16 @@ include 'includes/config.php';
             max-width: 100%;
             box-sizing: border-box;
         }
+        .facility-icon-wrap { transition: background-color 0.3s ease; }
+        .facility-card:hover .facility-icon-wrap { background-color: #2b7a78; }
+        .facility-card:hover .facility-icon-wrap svg { color: white; }
+        .facility-icon-wrap svg { transition: color 0.3s ease; }
     </style>
 </head>
 <body class="bg-boutique-50 text-slate-700 antialiased selection:bg-boutique-600 selection:text-white overflow-x-hidden">
 
 <?php include 'includes/header.php'; ?>
 
-<!-- ============================================================
-     NOTICE BANNER (DB error fallback)
-============================================================ -->
 <?php if (!isset($conn) || !$conn): ?>
 <div class="bg-red-50 border-b border-red-100 text-red-800 text-sm text-center px-4 py-3 font-medium">
     ⚠️ Database connection unavailable. Room availability is temporarily offline. Please contact us directly to book.
@@ -85,44 +78,43 @@ include 'includes/config.php';
      HERO + BOOKING SEARCH WIDGET
 ============================================================ -->
 <section id="booking-widget" class="relative flex flex-col items-center justify-center bg-boutique-900 overflow-hidden min-h-[85vh] py-20 lg:py-24 scroll-mt-0">
-    <!-- Background Image -->
     <img src="assets/banner.jpg" alt="Zayin Guest House"
          class="absolute inset-0 w-full h-full object-cover"
          onerror="this.src='https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'">
-    <!-- Gradient Overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-boutique-900/50 via-boutique-900/55 to-boutique-900/85"></div>
 
-    <!-- Hero Title -->
     <div class="relative z-10 text-center px-6 mb-10 lg:mb-12">
         <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-5 block">Welcome to</span>
         <h1 class="text-5xl lg:text-7xl font-serif text-white leading-[1.1] mb-5">
             Zayin <br><span class="italic text-boutique-400 font-light">Guest House</span>
         </h1>
         <p class="text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
-            Comfortable and affordable rooms in Malaysia. Book directly for the best rates — no fees, no middlemen.
+            8 beautifully designed rooms with a private swimming pool in Jitra, Kedah. Book directly for the best rates — no fees, no middlemen.
         </p>
     </div>
 
-    <!-- Booking Search Widget -->
-    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 lg:px-6">
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-4 lg:px-6">
         <form action="guest/search.php" method="GET" id="heroSearchForm"
-              class="bg-white shadow-2xl p-5 lg:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
-            <div class="min-w-0">
-                <label for="heroCheckIn" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Check-in</label>
+              class="bg-white shadow-2xl p-5 lg:p-6 flex flex-col sm:flex-row gap-0 items-stretch">
+            <!-- Check-in -->
+            <div class="flex-1 min-w-0 px-4 py-3 border-b sm:border-b-0 sm:border-r border-slate-100">
+                <label for="heroCheckIn" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-1.5">Check-in</label>
                 <input type="date" name="check_in" id="heroCheckIn" required
                        min="<?= date('Y-m-d') ?>" value="<?= date('Y-m-d') ?>"
-                       class="w-full min-w-0 border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm">
+                       class="w-full border-0 p-0 text-boutique-800 font-medium focus:outline-none text-sm bg-transparent">
             </div>
-            <div class="min-w-0">
-                <label for="heroCheckOut" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Check-out</label>
+            <!-- Check-out -->
+            <div class="flex-1 min-w-0 px-4 py-3 border-b sm:border-b-0 sm:border-r border-slate-100">
+                <label for="heroCheckOut" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-1.5">Check-out</label>
                 <input type="date" name="check_out" id="heroCheckOut" required
                        min="<?= date('Y-m-d', strtotime('+1 day')) ?>"
-                       class="w-full min-w-0 border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm">
+                       class="w-full border-0 p-0 text-boutique-800 font-medium focus:outline-none text-sm bg-transparent">
             </div>
-            <div class="min-w-0">
-                <label for="heroGuests" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Guests</label>
+            <!-- Guests -->
+            <div class="flex-1 min-w-0 px-4 py-3 border-b sm:border-b-0 sm:border-r border-slate-100">
+                <label for="heroGuests" class="block text-xs font-bold tracking-widest uppercase text-slate-400 mb-1.5">Guests</label>
                 <select name="guests" id="heroGuests"
-                        class="w-full min-w-0 border border-slate-200 px-4 py-3 text-boutique-800 font-medium focus:outline-none focus:border-boutique-600 text-sm bg-white">
+                        class="w-full border-0 p-0 text-boutique-800 font-medium focus:outline-none text-sm bg-transparent appearance-none">
                     <option value="1">1 Guest</option>
                     <option value="2" selected>2 Guests</option>
                     <option value="3">3 Guests</option>
@@ -130,9 +122,10 @@ include 'includes/config.php';
                     <option value="5">5 Guests</option>
                 </select>
             </div>
-            <div class="min-w-0">
+            <!-- Submit -->
+            <div class="shrink-0">
                 <button type="submit"
-                        class="w-full bg-boutique-600 hover:bg-boutique-800 text-white py-3 text-sm font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2">
+                        class="h-full w-full sm:w-auto bg-boutique-600 hover:bg-boutique-800 text-white px-8 py-4 text-sm font-bold tracking-widest uppercase transition-colors flex items-center justify-center gap-2 whitespace-nowrap">
                     <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     Check Availability
                 </button>
@@ -145,7 +138,6 @@ include 'includes/config.php';
 </section>
 
 <script>
-    // Keep check-out min = check-in + 1 day; auto-focus check-out after check-in is picked
     (function () {
         var ci = document.getElementById('heroCheckIn');
         var co = document.getElementById('heroCheckOut');
@@ -156,81 +148,239 @@ include 'includes/config.php';
             nextDay.setDate(nextDay.getDate() + 1);
             var nd = nextDay.toISOString().split('T')[0];
             co.min = nd;
-            if (co.value && co.value <= ci.value) {
-                co.value = nd;
-            }
+            if (co.value && co.value <= ci.value) { co.value = nd; }
             co.focus();
         });
     })();
 </script>
 
 <!-- ============================================================
-     THE EXPERIENCE (Combined About + Amenities)
+     THE EXPERIENCE (About + Amenities)
 ============================================================ -->
-<section class="py-24 px-6 lg:px-20 bg-boutique-800 text-boutique-100">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-        
-        <!-- About Text -->
-        <div>
-            <h2 class="text-3xl lg:text-5xl font-serif text-white mb-8">Crafted for <br><span class="italic text-boutique-400">Tranquility</span></h2>
-            <p class="text-lg text-boutique-100 leading-relaxed mb-6 font-light">
-                Zayin Guest House offers a warm and welcoming environment with 8 fully-furnished rooms designed to meet the needs of every guest. 
-            </p>
-            <p class="text-lg text-boutique-100 leading-relaxed font-light">
-                Whether you're looking for a cozy Standard room or a spacious Family suite, we provide the perfect blend of essential comforts and a peaceful atmosphere. Book directly with us to secure the best rates without hidden fees.
-            </p>
+<section class="py-16 lg:py-20 px-6 lg:px-20 bg-boutique-800 text-boutique-100">
+    <div class="max-w-7xl mx-auto">
 
-            <!-- Full House Note -->
-            <div class="mt-12 p-6 border border-boutique-600 bg-boutique-900/50">
-                <h3 class="text-white font-serif text-xl mb-2">Exclusive Full House Booking</h3>
-                <p class="text-sm text-boutique-100 leading-relaxed mb-4">
-                    Planning a retreat or family gathering? Reserve all 8 rooms for absolute privacy.
+        <!-- Top: About (left) + Amenities (right) — balanced columns -->
+        <div class="grid grid-cols-1 lg:grid-cols-[5fr_1px_7fr] gap-0 lg:gap-0 items-start mb-0">
+
+            <!-- About Text -->
+            <div class="lg:pr-14 pb-10 lg:pb-0">
+                <h2 class="text-3xl lg:text-5xl font-serif text-white mb-6">A Home Away <br><span class="italic text-boutique-400">from Home</span></h2>
+                <p class="text-base text-boutique-100 leading-relaxed mb-4 font-light">
+                    Nestled in the peaceful surroundings of Tanjung Pauh, Jitra, Zayin Guest House welcomes you with 8 beautifully designed rooms across three unique concepts — Modern, Cabin, and Traditional.
                 </p>
-                <a href="https://wa.me/60XXXXXXXXXX?text=Hi%2C+I'm+interested+in+booking+the+full+house." class="text-sm font-semibold text-boutique-400 hover:text-white uppercase tracking-wider transition-colors inline-flex items-center gap-2">
-                    Enquire Now <span aria-hidden="true">&rarr;</span>
-                </a>
+                <p class="text-base text-boutique-100 leading-relaxed font-light">
+                    Take a dip in our private pool, gather in the open kitchen, or simply relax in our gazebo. Book directly with us to secure the best rates without hidden fees.
+                </p>
+
+                <!-- Quick Stats -->
+                <div class="mt-8 grid grid-cols-3 gap-4 border-t border-boutique-600 pt-6">
+                    <div>
+                        <p class="text-3xl font-serif text-boutique-400 font-bold">8</p>
+                        <p class="text-xs text-boutique-100/60 uppercase tracking-wider mt-1">Rooms</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-serif text-boutique-400 font-bold">3</p>
+                        <p class="text-xs text-boutique-100/60 uppercase tracking-wider mt-1">Concepts</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-serif text-boutique-400 font-bold">32</p>
+                        <p class="text-xs text-boutique-100/60 uppercase tracking-wider mt-1">Max Guests</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vertical Divider (desktop only) -->
+            <div class="hidden lg:block bg-boutique-600 self-stretch mx-0"></div>
+
+            <!-- Amenities Grid -->
+            <div class="lg:pl-14 border-t border-boutique-600 pt-8 lg:border-t-0 lg:pt-0">
+                <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-6 block border-b border-boutique-600 pb-4">The Amenities</span>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                    <?php
+                    $amenities = [
+                        ['label' => 'Private Swimming Pool', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>'],
+                        ['label' => 'Open Kitchen', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M3 14h18M5 6h.01M8 6h.01M11 6h.01M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>'],
+                        ['label' => 'Free Wi-Fi (800 Mbps)', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>'],
+                        ['label' => 'Air Conditioning', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3v2.25M14.25 3v2.25M4.5 7.5h15M4.5 12h15M4.5 16.5h15M9.75 21v-2.25M14.25 21v-2.25"/>'],
+                        ['label' => 'Hot Water Showers', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m8-9h1M3 12H2m14.5-6.5l-.7.7M6.2 17.8l-.7.7M17.8 17.8l.7.7M6.9 6.2l-.7-.7M12 7a5 5 0 110 10A5 5 0 0112 7z"/>'],
+                        ['label' => 'Surau &amp; Prayer Space', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L4 7v13h16V7L12 2zm0 0v18M4 7h16"/>'],
+                        ['label' => 'Gazebo &amp; BBQ Pit', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>'],
+                        ['label' => 'Free Parking', 'icon' => '<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7h4a3 3 0 010 6H9"/>'],
+                        ['label' => 'Petanque Court', 'icon' => '<circle cx="12" cy="12" r="9" stroke-width="1.5"/><circle cx="9" cy="10" r="2" stroke-width="1.5"/><circle cx="15" cy="14" r="2" stroke-width="1.5"/>'],
+                        ['label' => 'Entertainment Corner', 'soon' => true, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>'],
+                    ];
+                    foreach ($amenities as $item): ?>
+                    <li class="flex items-center gap-3 text-boutique-50 text-sm">
+                        <span class="shrink-0 w-8 h-8 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $item['icon'] ?></svg>
+                        </span>
+                        <span class="tracking-wide"><?= $item['label'] ?></span>
+                        <?php if (!empty($item['soon'])): ?>
+                        <span class="text-xs bg-boutique-600/30 text-boutique-400 px-2 py-0.5 rounded-full">Soon</span>
+                        <?php endif; ?>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Full House Package — full-width strip below both columns -->
+        <div class="mt-12 border-t border-boutique-600 pt-10">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
+                <div class="shrink-0 w-12 h-12 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 22V12h6v10"/></svg>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-white font-serif text-xl mb-1">Full House Package — RM1,400 <span class="text-boutique-400 text-base font-sans font-light">/night</span></h3>
+                    <p class="text-sm text-boutique-100 font-light">Book all 8 rooms for up to 32 guests. Pool, kitchen, and all facilities become exclusively yours. Perfect for family days, reunions &amp; celebrations.</p>
+                </div>
+                <div class="shrink-0">
+                    <a href="guest/search.php" class="inline-flex items-center gap-2 border border-boutique-400 text-boutique-400 hover:bg-boutique-400 hover:text-boutique-900 px-6 py-3 text-sm font-bold tracking-widest uppercase transition-all whitespace-nowrap">
+                        Book Now &rarr;
+                    </a>
+                </div>
             </div>
         </div>
 
-        <!-- Amenities Grid -->
-        <div>
-            <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-8 block border-b border-boutique-600 pb-4">The Amenities</span>
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-                <?php
-                $amenities = [
-                    'Free High-Speed Wi-Fi',
-                    'Air Conditioning',
-                    'Hot Water Showers',
-                    'Ample Free Parking',
-                    'In-Room Television',
-                    'Fresh Premium Linens',
-                    '24/7 Secured Premises',
-                    'Shared Kitchen Access'
-                ];
-                foreach ($amenities as $item): ?>
-                <li class="flex items-center gap-4 text-boutique-50 text-sm tracking-wide">
-                    <svg class="w-5 h-5 text-boutique-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
-                    <?= $item ?>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        
     </div>
 </section>
 
 <!-- ============================================================
-     OUR SUITES (Alternating Layout Rooms)
+     SHARING FACILITIES
 ============================================================ -->
-<section id="suites" class="py-24 bg-white scroll-mt-10">
+<section id="facilities" class="py-16 lg:py-20 bg-boutique-50 scroll-mt-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-20">
+
+        <div class="text-center mb-12">
+            <span class="tracking-[0.2em] text-boutique-600 text-xs font-bold uppercase mb-4 block">Available to All Guests</span>
+            <h2 class="text-4xl lg:text-5xl font-serif text-boutique-800 mb-4">Shared <span class="italic text-slate-400">Spaces</span></h2>
+            <p class="text-slate-500 max-w-xl mx-auto">All shared facilities become exclusively private when you reserve the full house.</p>
+        </div>
+
+        <?php
+        $facilities = [
+            [
+                'name' => 'Swimming Pool',
+                'desc' => 'Open daily 7–11am & 5–10pm. Cool off and unwind in our clean, private pool.',
+                'hours' => '7–11am · 5–10pm',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>',
+                'image' => '',
+                'soon' => false,
+            ],
+            [
+                'name' => 'Open Kitchen',
+                'desc' => 'Fully equipped with rice cooker, air fryer, microwave, blender, fridge, and more. Cook anytime.',
+                'hours' => 'Available 24h',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M3 14h18M5 6h.01M8 6h.01M11 6h.01M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>',
+                'image' => '',
+                'soon' => false,
+            ],
+            [
+                'name' => 'Gazebo & BBQ Pit',
+                'desc' => 'Relax outdoors in our shaded gazebo. BBQ pit available for rent at RM10 per session (bring your own charcoal).',
+                'hours' => 'BBQ: RM10/session',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>',
+                'image' => '',
+                'soon' => false,
+            ],
+            [
+                'name' => 'Surau',
+                'desc' => 'A dedicated prayer space available to all guests throughout their stay.',
+                'hours' => 'Open 24h',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L4 7v13h16V7L12 2zm0 0v18M4 7h16"/>',
+                'image' => '',
+                'soon' => false,
+            ],
+            [
+                'name' => 'Petanque Court',
+                'desc' => 'Challenge your group to a friendly game of petanque — a fun outdoor activity for all ages.',
+                'hours' => 'Daylight hours',
+                'icon' => '<circle cx="12" cy="12" r="9" stroke-width="1.5"/><circle cx="9" cy="10" r="2" stroke-width="1.5"/><circle cx="15" cy="14" r="2" stroke-width="1.5"/>',
+                'image' => '',
+                'soon' => false,
+            ],
+            [
+                'name' => 'Entertainment Corner',
+                'desc' => 'A dedicated cinema and playroom packed with mini games — perfect for families and group stays.',
+                'hours' => 'Coming soon',
+                'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>',
+                'image' => '',
+                'soon' => true,
+            ],
+        ];
+        ?>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <?php foreach ($facilities as $f): ?>
+            <div class="facility-card bg-white overflow-hidden shadow-sm group">
+                <!-- Image or icon placeholder -->
+                <?php if (!empty($f['image'])): ?>
+                <div class="aspect-[4/3] overflow-hidden">
+                    <img src="<?= htmlspecialchars($f['image']) ?>" alt="<?= htmlspecialchars($f['name']) ?>" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                </div>
+                <?php else: ?>
+                <div class="aspect-[4/3] bg-boutique-100 flex flex-col items-center justify-center gap-4 relative">
+                    <?php if ($f['soon']): ?>
+                    <div class="absolute top-3 right-3">
+                        <span class="bg-boutique-600 text-white text-xs font-bold tracking-widest uppercase px-3 py-1">Coming Soon</span>
+                    </div>
+                    <?php endif; ?>
+                    <span class="facility-icon-wrap w-16 h-16 rounded-full bg-boutique-50 border border-boutique-200 flex items-center justify-center text-boutique-400">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $f['icon'] ?></svg>
+                    </span>
+                    <p class="text-xs tracking-widest uppercase font-semibold text-boutique-300">Photo Coming Soon</p>
+                </div>
+                <?php endif; ?>
+                <div class="p-6">
+                    <div class="flex items-start justify-between gap-3 mb-2">
+                        <h3 class="font-serif text-boutique-800 text-xl"><?= htmlspecialchars($f['name']) ?></h3>
+                        <span class="shrink-0 text-xs text-boutique-600 font-medium bg-boutique-50 border border-boutique-100 px-2 py-1 whitespace-nowrap"><?= htmlspecialchars($f['hours']) ?></span>
+                    </div>
+                    <p class="text-sm text-slate-500 leading-relaxed"><?= htmlspecialchars($f['desc']) ?></p>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
+        <!-- Full House CTA Banner -->
+        <div class="bg-boutique-800 text-white p-8 lg:p-12">
+            <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+                <!-- Icon -->
+                <div class="shrink-0 w-16 h-16 rounded-full border border-boutique-600 flex items-center justify-center text-boutique-400">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 22V12h6v10"/></svg>
+                </div>
+                <div class="text-center lg:text-left flex-1">
+                    <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-2 block">Book All 8 Rooms</span>
+                    <h3 class="text-2xl lg:text-3xl font-serif mb-2">Make It All Yours</h3>
+                    <p class="text-boutique-100 max-w-lg mb-1">Pool, kitchen, gazebo, and entertainment corner — all shared spaces become <em>exclusively private</em> when you book the Full House Package.</p>
+                    <p class="text-boutique-400 text-sm">Up to 32 guests &middot; RM1,400/night &middot; Free BBQ Pit included</p>
+                </div>
+                <div class="shrink-0">
+                    <a href="guest/search.php"
+                       class="inline-flex items-center gap-3 bg-boutique-600 hover:bg-boutique-400 text-white px-8 py-4 text-sm font-bold tracking-widest uppercase transition-colors whitespace-nowrap">
+                        Check Availability
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     OUR ACCOMMODATIONS
+============================================================ -->
+<section id="suites" class="py-16 lg:py-20 bg-white scroll-mt-10">
     <div class="max-w-7xl mx-auto px-6 lg:px-20">
         
-        <div class="text-center mb-20">
+        <div class="text-center mb-14">
             <h2 class="text-4xl lg:text-5xl font-serif text-boutique-800 mb-4">Our <span class="italic text-slate-400">Accommodations</span></h2>
             <p class="text-slate-500 max-w-2xl mx-auto">Explore our thoughtfully designed rooms, blending minimalist aesthetics with ultimate comfort.</p>
         </div>
 
-        <div class="space-y-24 lg:space-y-32">
+        <div class="space-y-16 lg:space-y-24">
             <?php 
             $has_rooms = false;
             if (isset($conn) && $conn):
@@ -241,8 +391,7 @@ include 'includes/config.php';
                     while ($room = $rooms_result->fetch_assoc()): 
                         $isReversed = $index % 2 !== 0;
             ?>
-                        <!-- Room Feature Block -->
-                        <div class="room-card group flex flex-col <?= $isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row' ?> items-center gap-10 lg:gap-20">
+                        <div class="room-card group flex flex-col <?= $isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row' ?> items-center gap-10 lg:gap-16">
                             <!-- Image side -->
                             <div class="w-full lg:w-1/2 room-img-wrapper overflow-hidden relative bg-boutique-50 aspect-[4/3] lg:aspect-[5/4]">
                                 <?php if (!empty($room['image']) && file_exists(__DIR__ . '/' . $room['image'])): ?>
@@ -250,36 +399,48 @@ include 'includes/config.php';
                                      alt="<?= htmlspecialchars($room['name']) ?>"
                                      class="w-full h-full object-cover">
                                 <?php else: ?>
-                                <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                                    <svg class="w-12 h-12 text-boutique-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-boutique-100">
+                                    <span class="w-16 h-16 rounded-full border border-boutique-300 flex items-center justify-center text-boutique-300">
+                                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                    </span>
                                     <p class="text-xs tracking-widest uppercase font-semibold text-boutique-300">Photo Coming Soon</p>
                                 </div>
                                 <?php endif; ?>
                                 <div class="absolute top-4 <?= $isReversed ? 'right-4' : 'left-4' ?> bg-white/90 backdrop-blur px-3 py-1 text-xs tracking-widest uppercase font-semibold text-boutique-800">
                                     <?= htmlspecialchars($room['room_type']) ?>
                                 </div>
+                                <!-- Room number badge on image -->
+                                <div class="absolute bottom-4 <?= $isReversed ? 'left-4' : 'right-4' ?> text-4xl font-serif text-white/20 font-bold leading-none select-none pointer-events-none">
+                                    <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?>
+                                </div>
                             </div>
                             
                             <!-- Content side -->
                             <div class="w-full lg:w-1/2 flex flex-col justify-center">
-                                <span class="text-boutique-400 text-6xl lg:text-8xl font-serif opacity-20 absolute -z-10 -translate-y-10 lg:-translate-x-10 select-none">
-                                    <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?>
-                                </span>
-                                
-                                <h3 class="text-3xl font-serif text-boutique-800 mb-4"><?= htmlspecialchars($room['name']) ?></h3>
+                                <h3 class="text-3xl font-serif text-boutique-800 mb-3"><?= htmlspecialchars($room['name']) ?></h3>
                                 <p class="text-slate-500 mb-6 leading-relaxed">
                                     <?= htmlspecialchars($room['description']) ?>
                                 </p>
                                 
-                                <div class="flex items-center gap-8 mb-8 border-y border-slate-100 py-4">
-                                    <div>
-                                        <p class="text-xs tracking-wider uppercase text-slate-400 mb-1">Capacity</p>
-                                        <p class="font-medium text-boutique-800">Up to <?= (int)$room['capacity'] ?> Guest<?= $room['capacity'] > 1 ? 's' : '' ?></p>
+                                <div class="flex items-center gap-8 mb-6 border-y border-slate-100 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-xs tracking-wider uppercase text-slate-400">Capacity</p>
+                                            <p class="font-medium text-boutique-800 text-sm">Up to <?= (int)$room['capacity'] ?> Guest<?= $room['capacity'] > 1 ? 's' : '' ?></p>
+                                        </div>
                                     </div>
                                     <div class="w-px h-10 bg-slate-200"></div>
-                                    <div>
-                                        <p class="text-xs tracking-wider uppercase text-slate-400 mb-1">Rate</p>
-                                        <p class="font-medium text-boutique-800">RM <?= number_format($room['price_per_night'], 0) ?> <span class="text-sm text-slate-500 font-normal">/night</span></p>
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-8 h-8 rounded-full bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-xs tracking-wider uppercase text-slate-400">Rate</p>
+                                            <p class="font-medium text-boutique-800 text-sm">RM <?= number_format($room['price_per_night'], 0) ?> <span class="text-xs text-slate-500 font-normal">/night</span></p>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -287,7 +448,7 @@ include 'includes/config.php';
                                     <a href="guest/book.php?room_id=<?= $room['id'] ?>"
                                        class="inline-flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-boutique-800 hover:text-boutique-600 transition-colors group/btn">
                                         Book This Room
-                                        <span class="w-8 h-px bg-boutique-800 group-hover/btn:w-12 transition-all"></span>
+                                        <span class="w-8 h-px bg-boutique-800 group-hover/btn:w-12 transition-all duration-300"></span>
                                     </a>
                                 </div>
                             </div>
@@ -298,44 +459,56 @@ include 'includes/config.php';
                 endif;
             endif;
             
-            // Fallback content if DB is down or empty
             if (!$has_rooms):
                 $placeholder_rooms = [
-                    ['name' => 'Standard Double', 'type' => 'Standard', 'desc' => 'A cozy retreat perfect for couples or solo travelers, featuring premium bedding and essential modern comforts.', 'cap' => '2', 'price' => '80'],
-                    ['name' => 'Deluxe Twin', 'type' => 'Deluxe', 'desc' => 'Spacious and bright, our twin room offers flexible sleeping arrangements with elegant decor and extra living space.', 'cap' => '2', 'price' => '110'],
-                    ['name' => 'Family Suite', 'type' => 'Suite', 'desc' => 'Designed for togetherness. This expansive suite accommodates the whole family comfortably without compromising on style.', 'cap' => '4', 'price' => '160']
+                    ['name' => 'Standard Room', 'type' => 'Standard', 'desc' => 'A comfortable queen bed room in our Modern or Traditional concept, perfect for couples or solo travelers. Includes TV, air conditioning, and hot water shower.', 'cap' => '2', 'price' => '165'],
+                    ['name' => 'Superior Room', 'type' => 'Superior', 'desc' => 'More space, more flexibility. Our Superior rooms feature a queen bed plus an additional single bed — ideal for small families or groups of three.', 'cap' => '3', 'price' => '185'],
+                    ['name' => 'Family Cabin', 'type' => 'Family', 'desc' => 'Our Cabin concept Family rooms sleep up to 5 guests with one queen bed and three single beds — designed for the whole family.', 'cap' => '5', 'price' => '195']
                 ];
                 foreach ($placeholder_rooms as $index => $pr): 
                     $isReversed = $index % 2 !== 0;
             ?>
-                <!-- Placeholder Block -->
-                <div class="room-card group flex flex-col <?= $isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row' ?> items-center gap-10 lg:gap-20">
-                    <div class="w-full lg:w-1/2 room-img-wrapper overflow-hidden relative bg-boutique-100 aspect-[4/3] lg:aspect-[5/4] flex items-center justify-center">
-                        <span class="text-boutique-400 text-sm tracking-widest uppercase">Image Pending</span>
+                <div class="room-card group flex flex-col <?= $isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row' ?> items-center gap-10 lg:gap-16">
+                    <div class="w-full lg:w-1/2 room-img-wrapper overflow-hidden relative bg-boutique-100 aspect-[4/3] lg:aspect-[5/4] flex flex-col items-center justify-center gap-4">
+                        <span class="w-16 h-16 rounded-full border border-boutique-300 flex items-center justify-center text-boutique-300">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </span>
+                        <span class="text-boutique-300 text-xs tracking-widest uppercase font-semibold">Image Pending</span>
+                        <!-- Room number watermark on image -->
+                        <div class="absolute bottom-4 right-4 text-4xl font-serif text-boutique-200 font-bold leading-none select-none pointer-events-none">
+                            <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?>
+                        </div>
                     </div>
                     
-                    <div class="w-full lg:w-1/2 flex flex-col justify-center relative">
-                         <span class="text-boutique-400 text-6xl lg:text-8xl font-serif opacity-10 absolute -z-10 -translate-y-12 select-none">
-                            <?= str_pad($index + 1, 2, '0', STR_PAD_LEFT) ?>
-                        </span>
-                        <h3 class="text-3xl font-serif text-boutique-800 mb-4"><?= $pr['name'] ?></h3>
+                    <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                        <h3 class="text-3xl font-serif text-boutique-800 mb-3"><?= $pr['name'] ?></h3>
                         <p class="text-slate-500 mb-6 leading-relaxed"><?= $pr['desc'] ?></p>
                         
-                        <div class="flex items-center gap-8 mb-8 border-y border-slate-100 py-4">
-                            <div>
-                                <p class="text-xs tracking-wider uppercase text-slate-400 mb-1">Capacity</p>
-                                <p class="font-medium text-boutique-800">Up to <?= $pr['cap'] ?> Guests</p>
+                        <div class="flex items-center gap-8 mb-6 border-y border-slate-100 py-4">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </span>
+                                <div>
+                                    <p class="text-xs tracking-wider uppercase text-slate-400">Capacity</p>
+                                    <p class="font-medium text-boutique-800 text-sm">Up to <?= $pr['cap'] ?> Guests</p>
+                                </div>
                             </div>
                             <div class="w-px h-10 bg-slate-200"></div>
-                            <div>
-                                <p class="text-xs tracking-wider uppercase text-slate-400 mb-1">Rate</p>
-                                <p class="font-medium text-boutique-800">RM <?= $pr['price'] ?> <span class="text-sm text-slate-500 font-normal">/night</span></p>
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </span>
+                                <div>
+                                    <p class="text-xs tracking-wider uppercase text-slate-400">Rate</p>
+                                    <p class="font-medium text-boutique-800 text-sm">RM <?= $pr['price'] ?> <span class="text-xs text-slate-500 font-normal">/night</span></p>
+                                </div>
                             </div>
                         </div>
 
                         <div>
                             <a href="#booking-widget" class="inline-flex items-center gap-3 text-sm font-semibold tracking-widest uppercase text-boutique-800 hover:text-boutique-600 transition-colors group/btn">
-                                Check Availability <span class="w-8 h-px bg-boutique-800 group-hover/btn:w-12 transition-all"></span>
+                                Check Availability <span class="w-8 h-px bg-boutique-800 group-hover/btn:w-12 transition-all duration-300"></span>
                             </a>
                         </div>
                     </div>
@@ -349,29 +522,60 @@ include 'includes/config.php';
 </section>
 
 <!-- ============================================================
-     ESSENTIAL POLICIES (Column Text Layout instead of Accordion)
+     HOUSE POLICIES
 ============================================================ -->
-<section id="rules" class="py-24 bg-boutique-50 scroll-mt-10">
+<section id="rules" class="py-16 lg:py-20 bg-boutique-50 scroll-mt-10">
     <div class="max-w-7xl mx-auto px-6 lg:px-20">
-        <div class="mb-16">
+        <div class="mb-12">
             <span class="tracking-[0.2em] text-boutique-600 text-xs font-bold uppercase mb-4 block">To Ensure a Pleasant Stay</span>
             <h2 class="text-3xl lg:text-4xl font-serif text-boutique-800">House Policies</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
-            <?php
-            $rules = [
-                ['Check-in & Out', 'Check-in from 3:00 PM. Check-out by 12:00 PM. Please inform us in advance for special timing requests.'],
-                ['Deposit Requirement', 'A non-refundable deposit is required to confirm bookings, applicable unless cancelled 48hrs prior.'],
-                ['Occupancy', 'Rooms are strictly limited to their stated capacity to ensure comfort and safety for all guests.'],
-                ['Smoke-Free Environment', 'For the comfort of all, smoking is strictly prohibited indoors. Designated outdoor areas are provided.'],
-                ['Quiet Hours', 'We request all guests to respect quiet hours from 10:00 PM to ensure a peaceful rest for everyone.'],
-                ['Cleanliness', 'Help us maintain our standards. Damages or excessive cleaning requirements may incur additional fees.']
-            ];
-            foreach ($rules as $rule): ?>
-            <div>
-                <h3 class="font-semibold text-boutique-800 text-base mb-2"><?= htmlspecialchars($rule[0]) ?></h3>
-                <p class="text-sm text-slate-600 leading-relaxed"><?= htmlspecialchars($rule[1]) ?></p>
+        <?php
+        $rules = [
+            [
+                'title' => 'Check-in & Out',
+                'desc'  => 'Check-in from 3:00 PM. Check-out by 12:00 PM. Please inform us in advance for special timing requests.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+            ],
+            [
+                'title' => 'Deposit Requirement',
+                'desc'  => 'A refundable RM100 deposit per room is required to confirm your booking. Returned via online transfer by 6pm on check-out day, subject to no damages or policy violations.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>',
+            ],
+            [
+                'title' => 'Occupancy & Extra Guests',
+                'desc'  => 'Rooms are strictly limited to their stated capacity. An extra charge of RM20 per person per night applies for guests exceeding the room limit.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>',
+            ],
+            [
+                'title' => 'Smoke-Free Environment',
+                'desc'  => 'For the comfort of all, smoking is strictly prohibited indoors. Designated outdoor areas are provided.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>',
+            ],
+            [
+                'title' => 'Quiet Hours',
+                'desc'  => 'We request all guests to respect quiet hours from 10:00 PM to ensure a peaceful rest for everyone.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>',
+            ],
+            [
+                'title' => 'Cleanliness',
+                'desc'  => 'Help us maintain our standards. Damages or excessive cleaning requirements may incur additional fees.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
+            ],
+        ];
+        ?>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <?php foreach ($rules as $rule): ?>
+            <div class="bg-white p-6 flex gap-4 items-start">
+                <span class="shrink-0 w-10 h-10 rounded-full bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 mt-0.5">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $rule['icon'] ?></svg>
+                </span>
+                <div>
+                    <h3 class="font-semibold text-boutique-800 text-sm mb-1.5"><?= htmlspecialchars($rule['title']) ?></h3>
+                    <p class="text-sm text-slate-500 leading-relaxed"><?= htmlspecialchars($rule['desc']) ?></p>
+                </div>
             </div>
             <?php endforeach; ?>
         </div>
@@ -382,10 +586,9 @@ include 'includes/config.php';
      LOCATION & BOOKING CTA
 ============================================================ -->
 <section id="location" class="relative bg-boutique-800 scroll-mt-10">
-    <!-- Map Background -->
     <div class="absolute inset-0 z-0 opacity-40 mix-blend-luminosity pointer-events-none lg:pointer-events-auto">
         <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127481.64!2d101.686855!3d3.139003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc362abd08e7d3%3A0x232d6e1b3a00fd80!2sKuala%20Lumpur%2C%20Malaysia!5e0!3m2!1sen!2smy!4v1234567890"
+            src="https://www.google.com/maps?q=Lot+116,+Kampung+Dato+Keramat,+Tanjung+Pauh,+06000+Jitra,+Kedah,+Malaysia&output=embed"
             class="w-full h-full"
             style="border:0;"
             allowfullscreen=""
@@ -395,30 +598,46 @@ include 'includes/config.php';
         </iframe>
     </div>
     
-    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 py-24 flex lg:justify-end">
-        <!-- Floating Contact Card -->
-        <div class="bg-white p-10 lg:p-14 shadow-2xl max-w-md w-full">
+    <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-20 py-16 lg:py-20 flex lg:justify-end">
+        <div class="bg-white p-8 lg:p-12 shadow-2xl max-w-md w-full">
             <h2 class="text-3xl font-serif text-boutique-800 mb-6">Plan Your Stay</h2>
             
-            <address class="not-italic text-sm text-slate-600 mb-8 leading-relaxed">
-                <strong class="block text-boutique-800 text-base mb-2 font-serif">Zayin Guest House</strong>
-                [Street Address],<br>
-                [City, Postcode],<br>
-                Malaysia
+            <address class="not-italic text-sm text-slate-600 mb-6 leading-relaxed flex gap-3 items-start">
+                <span class="shrink-0 w-8 h-8 rounded-full bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 mt-0.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </span>
+                <span>
+                    <strong class="block text-boutique-800 font-serif mb-0.5">Zayin Guest House</strong>
+                    Lot 116, Kampung Dato Keramat,<br>
+                    Tanjung Pauh, 06000 Jitra,<br>
+                    Kedah, Malaysia
+                </span>
             </address>
             
-            <div class="space-y-4 mb-10">
-                <a href="https://wa.me/60XXXXXXXXXX" target="_blank" rel="noopener" class="flex items-center gap-3 text-slate-600 hover:text-boutique-600 transition">
-                    <span class="w-8 h-8 rounded-full bg-boutique-50 flex items-center justify-center text-boutique-600">
+            <div class="space-y-3 mb-8">
+                <a href="https://wa.me/60103345184" target="_blank" rel="noopener" class="flex items-center gap-3 text-slate-600 hover:text-boutique-600 transition">
+                    <span class="w-8 h-8 rounded-full bg-boutique-50 flex items-center justify-center text-boutique-600 shrink-0">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
                     </span>
-                    <span class="text-sm font-medium">+60 X-XXXX-XXXX</span>
+                    <span class="text-sm font-medium">+60 10-334 5184</span>
                 </a>
                 <a href="mailto:zayinguesthouse@gmail.com" class="flex items-center gap-3 text-slate-600 hover:text-boutique-600 transition">
-                    <span class="w-8 h-8 rounded-full bg-boutique-50 flex items-center justify-center text-boutique-600">
+                    <span class="w-8 h-8 rounded-full bg-boutique-50 flex items-center justify-center text-boutique-600 shrink-0">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     </span>
                     <span class="text-sm font-medium">zayinguesthouse@gmail.com</span>
+                </a>
+                <a href="https://vt.tiktok.com/ZS9CR24My/" target="_blank" rel="noopener" class="flex items-center gap-3 text-slate-600 hover:text-boutique-600 transition">
+                    <span class="w-8 h-8 rounded-full bg-boutique-50 flex items-center justify-center text-boutique-600 shrink-0">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06Z"/></svg>
+                    </span>
+                    <span class="text-sm font-medium">TikTok</span>
+                </a>
+                <a href="https://www.facebook.com/share/p/1HNJaqnesr/" target="_blank" rel="noopener" class="flex items-center gap-3 text-slate-600 hover:text-boutique-600 transition">
+                    <span class="w-8 h-8 rounded-full bg-boutique-50 flex items-center justify-center text-boutique-600 shrink-0">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </span>
+                    <span class="text-sm font-medium">Facebook</span>
                 </a>
             </div>
             
@@ -427,7 +646,7 @@ include 'includes/config.php';
                 Check Availability &amp; Book
             </a>
             
-            <a href="https://maps.google.com/?q=Zayin+Guest+House+Malaysia"
+            <a href="https://maps.app.goo.gl/r4b7qxK5v3nRj3tR8"
                target="_blank" rel="noopener"
                class="block w-full border border-slate-200 hover:border-slate-400 text-slate-600 text-center py-4 text-sm font-semibold tracking-wider uppercase transition-colors mt-3">
                 Get Directions
