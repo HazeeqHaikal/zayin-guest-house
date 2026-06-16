@@ -261,40 +261,39 @@ include 'includes/config.php';
             [
                 'label' => 'Bedroom & Comfort',
                 'items' => [
-                    ['label' => 'Air Conditioning', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3v2.25M14.25 3v2.25M4.5 7.5h15M4.5 12h15M4.5 16.5h15M9.75 21v-2.25M14.25 21v-2.25"/>'],
-                    ['label' => 'Hot Water Shower', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m8-9h1M3 12H2m14.5-6.5l-.7.7M6.2 17.8l-.7.7M17.8 17.8l.7.7M6.9 6.2l-.7-.7M12 7a5 5 0 110 10A5 5 0 0112 7z"/>'],
+                    ['label' => 'Queen + Single Beds', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v13M21 7v13M3 12h18M6 7h12a1 1 0 011 1v4H5V8a1 1 0 011-1z"/>'],
+                    ['label' => 'Aircon & Fan', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 3v2.25M14.25 3v2.25M4.5 7.5h15M4.5 12h15M4.5 16.5h15M9.75 21v-2.25M14.25 21v-2.25"/>'],
                     ['label' => 'Smart TV', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>'],
-                    ['label' => 'Queen Bed', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v13M21 7v13M3 12h18M6 7h12a1 1 0 011 1v4H5V8a1 1 0 011-1z"/>'],
-                    ['label' => 'Wardrobe', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3h14a1 1 0 011 1v16a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zm7 0v18M9 8v1M15 8v1"/>'],
                     ['label' => 'Towel Provided', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 4v16M17 4v2M17 10v2M17 16v2M7 4h10M7 20h10"/>'],
+                    ['label' => 'Water Heater', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m8-9h1M3 12H2m14.5-6.5l-.7.7M6.2 17.8l-.7.7M17.8 17.8l.7.7M6.9 6.2l-.7-.7M12 7a5 5 0 110 10A5 5 0 0112 7z"/>'],
+                    ['label' => 'Extra Mattress', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 12h16M4 12a2 2 0 01-2-2V8a2 2 0 012-2h16a2 2 0 012 2v2a2 2 0 01-2 2M4 12v4a2 2 0 002 2h12a2 2 0 002-2v-4"/>'],
+                    ['label' => 'Body Wash', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 2h6M8 6l-2 3v11a2 2 0 002 2h8a2 2 0 002-2V9l-2-3M8 6h8M12 10v6m-2-3h4"/>'],
                 ],
             ],
             [
-                'label' => 'Kitchen & Dining',
+                'label' => 'Kitchen',
                 'items' => [
-                    ['label' => 'Open Kitchen', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M3 14h18M5 6h.01M8 6h.01M11 6h.01M5 18h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>'],
-                    ['label' => 'Rice Cooker', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14a1 1 0 011 1v7a3 3 0 01-3 3H7a3 3 0 01-3-3V9a1 1 0 011-1zm3-4h8M12 4v4"/>'],
-                    ['label' => 'Air Fryer', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l2 4H7L9 3zm-2 4h10v10a2 2 0 01-2 2H9a2 2 0 01-2-2V7zm5 3v4m-2-2h4"/>'],
+                    ['label' => 'Gas Stove', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8zm0 0V6a2 2 0 012-2h12a2 2 0 012 2v2M9 13a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2z"/>'],
                     ['label' => 'Microwave', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16a1 1 0 011 1v8a1 1 0 01-1 1H4a1 1 0 01-1-1V8a1 1 0 011-1zm12 2h1v4h-1V9zm-9 1h7v2H7v-2z"/>'],
-                    ['label' => 'Blender', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 3h8l2 7H6L8 3zm-2 7l2 11h8l2-11M10 15l2-3 2 3"/>'],
+                    ['label' => 'Rice Cooker', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14a1 1 0 011 1v7a3 3 0 01-3 3H7a3 3 0 01-3-3V9a1 1 0 011-1zm3-4h8M12 4v4"/>'],
+                    ['label' => 'Freezer', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18M3 12h18M7.757 7.757l8.486 8.486M16.243 7.757l-8.486 8.486"/>'],
                     ['label' => 'Refrigerator', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3h14a1 1 0 011 1v16a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1zm0 8h14M9 6v3M9 14v3"/>'],
+                    ['label' => 'Coway', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 3h8a2 2 0 012 2v14a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2zm4 5v2m0 0c-1.1 0-2 .9-2 2v4h4v-4c0-1.1-.9-2-2-2z"/>'],
+                    ['label' => 'Tableware / Crockery', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 2v6m0 0a2 2 0 100 4m0-4a2 2 0 000 4m0 0v10M18 2l-2 7h4L18 2zm0 7v11"/>'],
                 ],
             ],
             [
-                'label' => 'Recreation & Leisure',
+                'label' => 'General Facilities',
                 'items' => [
                     ['label' => 'Swimming Pool', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>'],
-                    ['label' => 'Gazebo & BBQ Pit', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>'],
+                    ['label' => 'Washing Machine', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4h16a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1zm8 4a4 4 0 100 8 4 4 0 000-8z"/>'],
+                    ['label' => 'Iron & Iron Board', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 19h18M7 19V12h10v7M7 12c0-3.3 2.7-6 6-6h2v6H7z"/>'],
+                    ['label' => 'Surau & Prayer Space', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L4 7v13h16V7L12 2zm0 0v18M4 7h16"/>'],
+                    ['label' => 'Spacious Parking', 'icon' => '<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7h4a3 3 0 010 6H9"/>'],
+                    ['label' => 'WiFi 800 Mbps', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>'],
                     ['label' => 'Petanque Court', 'icon' => '<circle cx="12" cy="12" r="9" stroke-width="1.5"/><circle cx="9" cy="10" r="2" stroke-width="1.5"/><circle cx="15" cy="14" r="2" stroke-width="1.5"/>'],
                     ['label' => 'Entertainment Corner', 'soon' => true, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.277A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/>'],
-                ],
-            ],
-            [
-                'label' => 'Connectivity & General',
-                'items' => [
-                    ['label' => 'Free Wi-Fi 800Mbps', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>'],
-                    ['label' => 'Free Parking', 'icon' => '<rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7h4a3 3 0 010 6H9"/>'],
-                    ['label' => 'Surau & Prayer Space', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2L4 7v13h16V7L12 2zm0 0v18M4 7h16"/>'],
+                    ['label' => 'Gazebo & BBQ Pit', 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>'],
                 ],
             ],
         ];
@@ -649,6 +648,16 @@ include 'includes/config.php';
                 'desc'  => 'Help us maintain our standards. Damages or excessive cleaning requirements may incur additional fees.',
                 'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>',
             ],
+            [
+                'title' => 'No Parties or Loud Noises',
+                'desc'  => 'Be considerate of fellow guests and neighbours. Parties, loud music, and disruptive behaviour are strictly prohibited at all times.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>',
+            ],
+            [
+                'title' => 'Report Damages & Inquiries',
+                'desc'  => 'Any damages, incidents, or concerns must be reported to management immediately. Prompt reporting helps us resolve issues quickly for everyone.',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>',
+            ],
         ];
         ?>
 
@@ -664,6 +673,199 @@ include 'includes/config.php';
                 </div>
             </div>
             <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     SWIMMING POOL RULES
+============================================================ -->
+<section id="pool-rules" class="py-16 lg:py-20 bg-boutique-900 scroll-mt-10">
+    <div class="max-w-5xl mx-auto px-6 lg:px-20">
+
+        <div class="text-center mb-12">
+            <span class="tracking-[0.2em] text-boutique-400 text-xs font-bold uppercase mb-4 block">Peraturan Kolam Renang</span>
+            <h2 class="text-3xl lg:text-4xl font-serif text-white">Swimming Pool <span class="italic text-boutique-400">Rules</span></h2>
+        </div>
+
+        <?php
+        $pool_rules = [
+            ['label' => 'Shower Before Entering Pool', 'no' => false, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m8-9h1M3 12H2m2.93-5.07l.7.7M18.37 6.63l.7-.7M6.63 18.37l-.7.7M18.37 17.37l.7.7M8 12a4 4 0 108 0 4 4 0 00-8 0z"/>'],
+            ['label' => 'Watch Your Children',        'no' => false, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>'],
+            ['label' => 'Use Restrooms',               'no' => false, 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>'],
+            ['label' => "Don't Run",                   'no' => true,  'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 5a1 1 0 100-2 1 1 0 000 2zm-4.5 3.5l1.5-2.5 2 2 2-1.5M5 20l3-5 2 2 3-4"/>'],
+            ['label' => 'No Glass Containers',         'no' => true,  'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6l1 9H8L9 3zm-1 9l1 9h6l1-9M3 3l18 18"/>'],
+            ['label' => 'No Pets',                     'no' => true,  'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3s-1 1-1 3 1 3 1 3M15 3s1 1 1 3-1 3-1 3M7 9c-1.5 1-2 3-1 5l2 4h8l2-4c1-2 .5-4-1-5M3 3l18 18"/>'],
+            ['label' => 'No Rough Play',               'no' => true,  'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>'],
+            ['label' => 'No Food',                     'no' => true,  'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 5.636a9 9 0 010 12.728M5.636 5.636a9 9 0 000 12.728M12 8v4m0 4h.01M3 3l18 18"/>'],
+        ];
+        ?>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+            <?php foreach ($pool_rules as $pr): ?>
+            <div class="flex flex-col items-center gap-3 text-center">
+                <div class="relative w-16 h-16 rounded-full border-2 <?= $pr['no'] ? 'border-red-500/60 bg-red-950/30' : 'border-boutique-500 bg-boutique-800' ?> flex items-center justify-center">
+                    <svg class="w-7 h-7 <?= $pr['no'] ? 'text-red-400' : 'text-boutique-300' ?>" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $pr['icon'] ?></svg>
+                </div>
+                <span class="text-[11px] font-bold tracking-widest uppercase leading-tight <?= $pr['no'] ? 'text-red-400/80' : 'text-boutique-100/70' ?>"><?= htmlspecialchars($pr['label']) ?></span>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
+        <p class="text-center text-boutique-400/60 text-xs mt-12 tracking-wide">Please follow the above guidelines for safety and comfort of all guests.</p>
+
+    </div>
+</section>
+
+<!-- ============================================================
+     SELF CHECK-IN & CHECK-OUT
+============================================================ -->
+<section id="checkin-guide" class="py-16 lg:py-20 bg-boutique-50 scroll-mt-10">
+    <div class="max-w-5xl mx-auto px-6 lg:px-20">
+
+        <div class="text-center mb-12">
+            <span class="tracking-[0.2em] text-boutique-600 text-xs font-bold uppercase mb-4 block">Easy &amp; Seamless</span>
+            <h2 class="text-3xl lg:text-4xl font-serif text-boutique-800">Self Check-in <span class="italic text-slate-400">&amp; Check-out</span></h2>
+            <div class="w-12 h-0.5 bg-boutique-600 mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="bg-white p-6 flex flex-col items-center text-center gap-4 shadow-sm">
+                <div class="w-12 h-12 rounded-full bg-boutique-900 flex items-center justify-center text-boutique-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase mb-2">Deposit Required</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">A security deposit of <strong class="text-boutique-700">RM100 (Refundable)</strong> is required prior to your arrival.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 flex flex-col items-center text-center gap-4 shadow-sm">
+                <div class="w-12 h-12 rounded-full bg-boutique-900 flex items-center justify-center text-boutique-400">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase mb-2">Get the Code</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">The lockbox code is provided before check-in <strong class="text-boutique-700">via WhatsApp</strong>.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 flex flex-col items-center text-center gap-4 shadow-sm">
+                <div class="w-12 h-12 rounded-full bg-boutique-900 flex items-center justify-center text-boutique-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase mb-2">Retrieve &amp; Return Key</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Insert the code &amp; turn <strong class="text-boutique-700">clockwise</strong>. Please return the key to the box after check-out.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 flex flex-col items-center text-center gap-4 shadow-sm">
+                <div class="w-12 h-12 rounded-full bg-boutique-900 flex items-center justify-center text-boutique-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase mb-2">Photo Update</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed">Kindly <strong class="text-boutique-700">send check-in &amp; check-out photos</strong> to our WhatsApp for verification.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     NEARBY ESTABLISHMENTS
+============================================================ -->
+<section id="nearby" class="py-16 lg:py-20 bg-white scroll-mt-10">
+    <div class="max-w-5xl mx-auto px-6 lg:px-20">
+
+        <div class="mb-10">
+            <span class="tracking-[0.2em] text-boutique-600 text-xs font-bold uppercase mb-4 block">Explore Jitra</span>
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-2">
+                <h2 class="text-3xl lg:text-4xl font-serif text-boutique-800">Nearby <span class="italic text-slate-400">Establishments</span></h2>
+                <p class="text-sm text-slate-400">Everything is just a short drive away from Zayin Guest House.</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Key Institutions -->
+            <div>
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-8 h-8 rounded bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 shrink-0">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                    </div>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase">Key Institutions</h3>
+                </div>
+                <div class="space-y-3">
+                    <?php
+                    $key_institutions = [
+                        ['name' => 'Hospital Jitra',          'dist' => '2.5 km'],
+                        ['name' => 'Balai Polis Jitra',       'dist' => '1.8 km'],
+                        ['name' => 'SMK Jitra',               'dist' => '0.8 km'],
+                        ['name' => 'Klinik Kesihatan Jitra',  'dist' => '2.0 km'],
+                    ];
+                    foreach ($key_institutions as $item): ?>
+                    <div class="flex justify-between items-center py-2 border-b border-slate-100 text-sm">
+                        <span class="text-slate-700"><?= htmlspecialchars($item['name']) ?></span>
+                        <span class="text-boutique-600 font-semibold text-xs shrink-0 ml-4"><?= htmlspecialchars($item['dist']) ?></span>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <!-- Higher Education -->
+            <div>
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-8 h-8 rounded bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 shrink-0">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase">Higher Education</h3>
+                </div>
+                <div class="space-y-3">
+                    <?php
+                    $higher_edu = [
+                        ['name' => 'UUM (Universiti Utara Malaysia)', 'dist' => '15 km'],
+                        ['name' => 'Politeknik Tuanku Syed Sirajuddin', 'dist' => '22 km'],
+                        ['name' => 'MARA Jitra',                      'dist' => '1.5 km'],
+                    ];
+                    foreach ($higher_edu as $item): ?>
+                    <div class="flex justify-between items-center py-2 border-b border-slate-100 text-sm">
+                        <span class="text-slate-700"><?= htmlspecialchars($item['name']) ?></span>
+                        <span class="text-boutique-600 font-semibold text-xs shrink-0 ml-4"><?= htmlspecialchars($item['dist']) ?></span>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <!-- Town, Beach & More -->
+            <div>
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-8 h-8 rounded bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 shrink-0">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase">Town, Beach &amp; More</h3>
+                </div>
+                <div class="space-y-3">
+                    <?php
+                    $town_more = [
+                        ['name' => 'Pekan Jitra',             'dist' => '~1 km'],
+                        ['name' => 'Alor Setar City',         'dist' => '~28 km'],
+                        ['name' => 'Pantai Kuala Kedah',      'dist' => '~20 km'],
+                        ['name' => 'AEON Mall Alor Setar',    'dist' => '~30 km'],
+                    ];
+                    foreach ($town_more as $item): ?>
+                    <div class="flex justify-between items-center py-2 border-b border-slate-100 text-sm">
+                        <span class="text-slate-700"><?= htmlspecialchars($item['name']) ?></span>
+                        <span class="text-boutique-600 font-semibold text-xs shrink-0 ml-4"><?= htmlspecialchars($item['dist']) ?></span>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                <p class="text-xs text-slate-400 mt-4 leading-relaxed">Restaurants, cafes, and local eateries are easily accessible along the street and in town.</p>
+            </div>
+
         </div>
     </div>
 </section>
