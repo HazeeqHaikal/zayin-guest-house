@@ -879,7 +879,7 @@ include 'includes/config.php';
 <section id="location" class="relative bg-boutique-800 scroll-mt-10">
     <div class="absolute inset-0 z-0 opacity-40 mix-blend-luminosity pointer-events-none lg:pointer-events-auto">
         <iframe
-            src="https://www.google.com/maps?q=Lot+116,+Kampung+Dato+Keramat,+Tanjung+Pauh,+06000+Jitra,+Kedah,+Malaysia&output=embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.085941817543!2d100.41903707462772!3d6.25240659373604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b59b603ecd21f%3A0x88151196b9124c1f!2sZayin%20Guest%20House!5e0!3m2!1sen!2smy!4v1781624947135!5m2!1sen!2smy"
             class="w-full h-full"
             style="border:0;"
             allowfullscreen=""
