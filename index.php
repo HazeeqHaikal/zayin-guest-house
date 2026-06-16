@@ -789,84 +789,87 @@ include 'includes/config.php';
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <?php
+        $nearby_cats = [
+            [
+                'label' => 'Health & Services',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>',
+                'items' => [
+                    ['name' => 'Hospital Jitra',                        'dist' => '8 min · 3.6 km'],
+                    ['name' => 'Masjid Al-Fateh Tanjung Pauh',          'dist' => '3 min · 1.2 km'],
+                ],
+            ],
+            [
+                'label' => 'Groceries & Shopping',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>',
+                'items' => [
+                    ['name' => 'C-Mart BDI Jitra',     'dist' => '3 min · 1.3 km'],
+                    ['name' => "Lotus's Jitra",         'dist' => '5 min · 2.0 km'],
+                    ['name' => 'Pasaraya Yawata',       'dist' => '5 min · 2.0 km'],
+                    ['name' => 'Eco-Shop @ Jitra',      'dist' => '2 min · 600 m'],
+                ],
+            ],
+            [
+                'label' => 'Food & Drinks',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/><circle cx="12" cy="12" r="9" stroke-width="1.5"/>',
+                'items' => [
+                    ['name' => 'Restoran Tok Keramat', 'dist' => '1 min · 400 m'],
+                    ['name' => 'Pulut Cafe, Jitra',    'dist' => '1 min · 300 m'],
+                ],
+            ],
+            [
+                'label' => 'Banks',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>',
+                'items' => [
+                    ['name' => 'Maybank',                     'dist' => '3 min · 1.2 km'],
+                    ['name' => 'Hong Leong Bank',             'dist' => '2 min · 950 m'],
+                    ['name' => 'Public Bank',                 'dist' => '5 min · 1.9 km'],
+                    ['name' => 'AmBank',                      'dist' => '4 min · 1.7 km'],
+                    ['name' => 'Bank Islam & Bank Rakyat',    'dist' => '4 min · 1.6 km'],
+                ],
+            ],
+            [
+                'label' => 'Education',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>',
+                'items' => [
+                    ['name' => 'Polimas (Politeknik Sultan Abdul Halim)', 'dist' => '4 min · 2.0 km'],
+                    ['name' => 'IKBN Jitra',                             'dist' => '10 min · 7.0 km'],
+                    ['name' => 'IPG Kampus Darulaman (IPDA)',            'dist' => '5 min · 2.2 km'],
+                    ['name' => 'Institut Aminudin Baki (IAB)',           'dist' => '5 min · 2.3 km'],
+                ],
+            ],
+            [
+                'label' => 'Recreation',
+                'icon'  => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 20c1.5 0 2.5-1 4-1s2.5 1 4 1 2.5-1 4-1M3 16c1.5 0 2.5 1 4 1s2.5-1 4-1 2.5 1 4 1 2.5-1 4-1M12 3v8m0 0c-2.5 0-4 1-5 3m5-3c2.5 0 4 1 5 3"/>',
+                'items' => [
+                    ['name' => 'Tasik Darulaman',              'dist' => '10 min · 5.5 km'],
+                    ['name' => 'Fantasia Aquapark Fun-tastik', 'dist' => '10 min · 5.6 km'],
+                ],
+            ],
+        ];
+        ?>
 
-            <!-- Key Institutions -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <?php foreach ($nearby_cats as $cat): ?>
             <div>
                 <div class="flex items-center gap-3 mb-5">
                     <div class="w-8 h-8 rounded bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 shrink-0">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><?= $cat['icon'] ?></svg>
                     </div>
-                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase">Key Institutions</h3>
+                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase"><?= htmlspecialchars($cat['label']) ?></h3>
                 </div>
-                <div class="space-y-3">
-                    <?php
-                    $key_institutions = [
-                        ['name' => 'Hospital Jitra',          'dist' => '2.5 km'],
-                        ['name' => 'Balai Polis Jitra',       'dist' => '1.8 km'],
-                        ['name' => 'SMK Jitra',               'dist' => '0.8 km'],
-                        ['name' => 'Klinik Kesihatan Jitra',  'dist' => '2.0 km'],
-                    ];
-                    foreach ($key_institutions as $item): ?>
+                <div class="space-y-0">
+                    <?php foreach ($cat['items'] as $item): ?>
                     <div class="flex justify-between items-center py-2 border-b border-slate-100 text-sm">
                         <span class="text-slate-700"><?= htmlspecialchars($item['name']) ?></span>
-                        <span class="text-boutique-600 font-semibold text-xs shrink-0 ml-4"><?= htmlspecialchars($item['dist']) ?></span>
+                        <span class="text-boutique-600 font-semibold text-xs shrink-0 ml-4 text-right"><?= htmlspecialchars($item['dist']) ?></span>
                     </div>
                     <?php endforeach; ?>
                 </div>
             </div>
-
-            <!-- Higher Education -->
-            <div>
-                <div class="flex items-center gap-3 mb-5">
-                    <div class="w-8 h-8 rounded bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 shrink-0">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase">Higher Education</h3>
-                </div>
-                <div class="space-y-3">
-                    <?php
-                    $higher_edu = [
-                        ['name' => 'UUM (Universiti Utara Malaysia)', 'dist' => '15 km'],
-                        ['name' => 'Politeknik Tuanku Syed Sirajuddin', 'dist' => '22 km'],
-                        ['name' => 'MARA Jitra',                      'dist' => '1.5 km'],
-                    ];
-                    foreach ($higher_edu as $item): ?>
-                    <div class="flex justify-between items-center py-2 border-b border-slate-100 text-sm">
-                        <span class="text-slate-700"><?= htmlspecialchars($item['name']) ?></span>
-                        <span class="text-boutique-600 font-semibold text-xs shrink-0 ml-4"><?= htmlspecialchars($item['dist']) ?></span>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-
-            <!-- Town, Beach & More -->
-            <div>
-                <div class="flex items-center gap-3 mb-5">
-                    <div class="w-8 h-8 rounded bg-boutique-50 border border-boutique-100 flex items-center justify-center text-boutique-600 shrink-0">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                    </div>
-                    <h3 class="font-bold text-boutique-800 text-sm tracking-wide uppercase">Town, Beach &amp; More</h3>
-                </div>
-                <div class="space-y-3">
-                    <?php
-                    $town_more = [
-                        ['name' => 'Pekan Jitra',             'dist' => '~1 km'],
-                        ['name' => 'Alor Setar City',         'dist' => '~28 km'],
-                        ['name' => 'Pantai Kuala Kedah',      'dist' => '~20 km'],
-                        ['name' => 'AEON Mall Alor Setar',    'dist' => '~30 km'],
-                    ];
-                    foreach ($town_more as $item): ?>
-                    <div class="flex justify-between items-center py-2 border-b border-slate-100 text-sm">
-                        <span class="text-slate-700"><?= htmlspecialchars($item['name']) ?></span>
-                        <span class="text-boutique-600 font-semibold text-xs shrink-0 ml-4"><?= htmlspecialchars($item['dist']) ?></span>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-                <p class="text-xs text-slate-400 mt-4 leading-relaxed">Restaurants, cafes, and local eateries are easily accessible along the street and in town.</p>
-            </div>
-
+            <?php endforeach; ?>
         </div>
+
     </div>
 </section>
 
